@@ -1,0 +1,1503 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Spring Boot 1.5.2 中文文档">
+      
+      
+        <link rel="canonical" href="http://spring-boot.apachecn.org/24/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>27. 开发Web应用程序 - Spring Boot 1.5.2 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f272a2ddc7c0d8fe7ea0ebce50ed44d3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#2746-web" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Spring Boot 1.5.2 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                27. 开发Web应用程序
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Spring Boot 1.5.2 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Spring Boot 1.5.2 中文文档" class="md-nav__link">
+      Spring Boot 1.5.2 中文文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="Part I. Spring Boot 文档" class="md-nav__link">
+      Part I. Spring Boot 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="Part II. 入门指南" class="md-nav__link">
+      Part II. 入门指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="8. Spring Boot 介绍" class="md-nav__link">
+      8. Spring Boot 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="9. 系统要求" class="md-nav__link">
+      9. 系统要求
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="10. 安装 Spring Boot" class="md-nav__link">
+      10. 安装 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="11. 开发您的第一个Spring Boot应用程序" class="md-nav__link">
+      11. 开发您的第一个Spring Boot应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="12. 接下来应该读什么" class="md-nav__link">
+      12. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Part III. 使用 Spring Boot" class="md-nav__link">
+      Part III. 使用 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="13. 构建系统" class="md-nav__link">
+      13. 构建系统
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="14. 构建代码" class="md-nav__link">
+      14. 构建代码
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="15. 配置类" class="md-nav__link">
+      15. 配置类
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="16. 自动配置" class="md-nav__link">
+      16. 自动配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="17. Spring Beans 和 依赖注入" class="md-nav__link">
+      17. Spring Beans 和 依赖注入
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="18. 使用@SpringBootApplication注解" class="md-nav__link">
+      18. 使用@SpringBootApplication注解
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="19. 运行你的应用程序" class="md-nav__link">
+      19. 运行你的应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../16/" title="20. 开发工具" class="md-nav__link">
+      20. 开发工具
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="21. 包装您的应用程序到生产环境" class="md-nav__link">
+      21. 包装您的应用程序到生产环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="22. 接下来应该读什么" class="md-nav__link">
+      22. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="Part IV. Spring Boot 功能" class="md-nav__link">
+      Part IV. Spring Boot 功能
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="23. SpringApplication" class="md-nav__link">
+      23. SpringApplication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../21/" title="24. 外部配置" class="md-nav__link">
+      24. 外部配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="25. 配置文件(Profiles)" class="md-nav__link">
+      25. 配置文件(Profiles)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../23/" title="26. 日志" class="md-nav__link">
+      26. 日志
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        27. 开发Web应用程序
+      </label>
+    
+    <a href="./" title="27. 开发Web应用程序" class="md-nav__link md-nav__link--active">
+      27. 开发Web应用程序
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#271-spring-web-mvc" title="27.1 “Spring Web MVC框架”" class="md-nav__link">
+    27.1 “Spring Web MVC框架”
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2711-spring-mvc" title="27.1.1 Spring MVC自动配置" class="md-nav__link">
+    27.1.1 Spring MVC自动配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2712-httpmessageconverters" title="27.1.2 HttpMessageConverters" class="md-nav__link">
+    27.1.2 HttpMessageConverters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2713-json" title="27.1.3 自定义JSON序列化器和反序列化器" class="md-nav__link">
+    27.1.3 自定义JSON序列化器和反序列化器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2714-messagecodesresolver" title="27.1.4 MessageCodesResolver" class="md-nav__link">
+    27.1.4 MessageCodesResolver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2715" title="27.1.5 静态内容" class="md-nav__link">
+    27.1.5 静态内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2716" title="27.1.6 自定义图标" class="md-nav__link">
+    27.1.6 自定义图标
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2717-configurablewebbindinginitializer" title="27.1.7 ConfigurableWebBindingInitializer" class="md-nav__link">
+    27.1.7 ConfigurableWebBindingInitializer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2718" title="27.1.8 模板引擎" class="md-nav__link">
+    27.1.8 模板引擎
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2719" title="27.1.9 错误处理" class="md-nav__link">
+    27.1.9 错误处理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="自定义错误页面" class="md-nav__link">
+    自定义错误页面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spring-mvc" title="映射Spring MVC之外的错误页面" class="md-nav__link">
+    映射Spring MVC之外的错误页面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websphere-application-server" title="WebSphere Application Server上的错误处理" class="md-nav__link">
+    WebSphere Application Server上的错误处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27110-spring-hateoas" title="27.1.10 Spring HATEOAS" class="md-nav__link">
+    27.1.10 Spring HATEOAS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27111-cors" title="27.1.11 CORS 支持" class="md-nav__link">
+    27.1.11 CORS 支持
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#272-jax-rs-jersey" title="27.2 JAX-RS 和 Jersey" class="md-nav__link">
+    27.2 JAX-RS 和 Jersey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#273-servlet" title="27.3 嵌入式servlet容器支持" class="md-nav__link">
+    27.3 嵌入式servlet容器支持
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2731-servlets-filters-listeners" title="27.3.1 Servlets, Filters 和 listeners" class="md-nav__link">
+    27.3.1 Servlets, Filters 和 listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2732-servlet-context" title="27.3.2 Servlet Context 初始化" class="md-nav__link">
+    27.3.2 Servlet Context 初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2733-embeddedwebapplicationcontext" title="27.3.3 EmbeddedWebApplicationContext" class="md-nav__link">
+    27.3.3 EmbeddedWebApplicationContext
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2734-servlet" title="27.3.4 定制嵌入式servlet容器" class="md-nav__link">
+    27.3.4 定制嵌入式servlet容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2735-jsp" title="27.3.5 JSP限制" class="md-nav__link">
+    27.3.5 JSP限制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../25/" title="28. Security" class="md-nav__link">
+      28. Security
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="29. 使用SQL数据库" class="md-nav__link">
+      29. 使用SQL数据库
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#271-spring-web-mvc" title="27.1 “Spring Web MVC框架”" class="md-nav__link">
+    27.1 “Spring Web MVC框架”
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2711-spring-mvc" title="27.1.1 Spring MVC自动配置" class="md-nav__link">
+    27.1.1 Spring MVC自动配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2712-httpmessageconverters" title="27.1.2 HttpMessageConverters" class="md-nav__link">
+    27.1.2 HttpMessageConverters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2713-json" title="27.1.3 自定义JSON序列化器和反序列化器" class="md-nav__link">
+    27.1.3 自定义JSON序列化器和反序列化器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2714-messagecodesresolver" title="27.1.4 MessageCodesResolver" class="md-nav__link">
+    27.1.4 MessageCodesResolver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2715" title="27.1.5 静态内容" class="md-nav__link">
+    27.1.5 静态内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2716" title="27.1.6 自定义图标" class="md-nav__link">
+    27.1.6 自定义图标
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2717-configurablewebbindinginitializer" title="27.1.7 ConfigurableWebBindingInitializer" class="md-nav__link">
+    27.1.7 ConfigurableWebBindingInitializer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2718" title="27.1.8 模板引擎" class="md-nav__link">
+    27.1.8 模板引擎
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2719" title="27.1.9 错误处理" class="md-nav__link">
+    27.1.9 错误处理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="自定义错误页面" class="md-nav__link">
+    自定义错误页面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spring-mvc" title="映射Spring MVC之外的错误页面" class="md-nav__link">
+    映射Spring MVC之外的错误页面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websphere-application-server" title="WebSphere Application Server上的错误处理" class="md-nav__link">
+    WebSphere Application Server上的错误处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27110-spring-hateoas" title="27.1.10 Spring HATEOAS" class="md-nav__link">
+    27.1.10 Spring HATEOAS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27111-cors" title="27.1.11 CORS 支持" class="md-nav__link">
+    27.1.11 CORS 支持
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#272-jax-rs-jersey" title="27.2 JAX-RS 和 Jersey" class="md-nav__link">
+    27.2 JAX-RS 和 Jersey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#273-servlet" title="27.3 嵌入式servlet容器支持" class="md-nav__link">
+    27.3 嵌入式servlet容器支持
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2731-servlets-filters-listeners" title="27.3.1 Servlets, Filters 和 listeners" class="md-nav__link">
+    27.3.1 Servlets, Filters 和 listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2732-servlet-context" title="27.3.2 Servlet Context 初始化" class="md-nav__link">
+    27.3.2 Servlet Context 初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2733-embeddedwebapplicationcontext" title="27.3.3 EmbeddedWebApplicationContext" class="md-nav__link">
+    27.3.3 EmbeddedWebApplicationContext
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2734-servlet" title="27.3.4 定制嵌入式servlet容器" class="md-nav__link">
+    27.3.4 定制嵌入式servlet容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2735-jsp" title="27.3.5 JSP限制" class="md-nav__link">
+    27.3.5 JSP限制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/spring-boot-doc-zh/edit/master/docs/24.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="2746-web">27. 开发Web应用程序</h1>
+<p>Spring Boot非常适合Web应用程序开发。 您可以使用嵌入式Tomcat，Jetty或Undertow轻松创建自包含的HTTP服务器。 大多数Web应用程序将使用spring-boot-starter-web模块快速启动和运行。</p>
+<p>如果您尚未开发Spring Boot Web应用程序，则可以按照“Hello World！”示例进行操作。 在“<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#getting-started-first-application">入门</a>”部分中的示例。</p>
+<h3 id="271-spring-web-mvc"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#271-spring-web-mvc框架"></a>27.1 “Spring Web MVC框架”</h3>
+<p>Spring Web MVC框架（通常简称为“Spring MVC”）是一个丰富的“模型视图控制器”Web框架。 Spring MVC允许您创建特殊的@Controller或@RestController bean来处理传入的HTTP请求。 您的控制器中的方法将使用@RequestMapping注释映射到HTTP。</p>
+<p>以下是@RestController用于提供JSON数据的典型示例：</p>
+<pre><code>@RestController
+@RequestMapping(value=&quot;/users&quot;)
+public class MyRestController {
+
+    @RequestMapping(value=&quot;/{user}&quot;, method=RequestMethod.GET)
+    public User getUser(@PathVariable Long user) {
+        // ...
+    }
+
+    @RequestMapping(value=&quot;/{user}/customers&quot;, method=RequestMethod.GET)
+    List&lt;Customer&gt; getUserCustomers(@PathVariable Long user) {
+        // ...
+    }
+
+    @RequestMapping(value=&quot;/{user}&quot;, method=RequestMethod.DELETE)
+    public User deleteUser(@PathVariable Long user) {
+        // ...
+    }
+
+}
+</code></pre>
+
+<p>Spring MVC是Spring Framework的一部分，详细信息可在<a href="http://docs.spring.io/spring/docs/4.3.7.RELEASE/spring-framework-reference/htmlsingle#mvc">参考文档</a>中找到。 <a href="https://spring.io/guides">Spring.io/guide</a>中还有几个指南可供Spring MVC使用。</p>
+<h4 id="2711-spring-mvc"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2711-spring-mvc自动配置"></a>27.1.1 Spring MVC自动配置</h4>
+<p>Spring Boot提供了适用于大多数应用程序的Spring MVC的自动配置。</p>
+<p>自动配置在Spring的默认值之上添加以下功能：</p>
+<ul>
+<li>包含ContentNegotiatingViewResolver和BeanNameViewResolver bean。</li>
+<li>支持提供静态资源，包括对WebJars的支持（见下文）。</li>
+<li>Converter，GenericConverter，Formatter beans的自动注册。</li>
+<li>支持HttpMessageConverters（见下文）。</li>
+<li>自动注册MessageCodesResolver（见下文）。</li>
+<li>静态index.html支持。</li>
+<li>自定义Favicon支持（见下文）。</li>
+<li>自动使用ConfigurableWebBindingInitializer bean（见下文）。</li>
+</ul>
+<p>如果要保留Spring Boot MVC功能，并且您只需要添加其他<a href="http://docs.spring.io/spring/docs/4.3.7.RELEASE/spring-framework-reference/htmlsingle#mvc">MVC配置</a>（interceptors, formatters, view, controllers等），你可以添加自己的WebConfigurerAdapter类型的@Configuration类，但不能使用@EnableWebMvc。 如果要提供自定义的RequestMappingHandlerMapping，RequestMappingHandlerAdapter或ExceptionHandlerExceptionResolver实例，您可以声明一个提供此类组件的WebMvcRegistrationsAdapter实例。</p>
+<p>如果要完全控制Spring MVC，可以使用@EnableWebMvc添加您自己的@Configuration注释。</p>
+<h4 id="2712-httpmessageconverters"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2712-httpmessageconverters"></a>27.1.2 HttpMessageConverters</h4>
+<p>Spring MVC使用HttpMessageConverter接口转换HTTP请求和响应。 包括一些开箱即用的合理配置，例如对象可以自动转换为JSON（使用Jackson库）或XML（使用Jackson XML扩展，如果可用，否则使用JAXB）。 字符串默认使用UTF-8进行编码。</p>
+<p>如果需要添加或自定义转换器，可以使用Spring Boot HttpMessageConverter类：</p>
+<pre><code>import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
+import org.springframework.context.annotation.*;
+import org.springframework.http.converter.*;
+
+@Configuration
+public class MyConfiguration {
+
+    @Bean
+    public HttpMessageConverters customConverters() {
+        HttpMessageConverter&lt;?&gt; additional = ...
+        HttpMessageConverter&lt;?&gt; another = ...
+        return new HttpMessageConverters(additional, another);
+    }
+
+}
+</code></pre>
+
+<p>上下文中存在的任何HttpMessageConverter bean将被添加到转换器列表中。 您也可以以这种方式覆盖默认转换器。</p>
+<h4 id="2713-json"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2713-自定义json序列化器和反序列化器"></a>27.1.3 自定义JSON序列化器和反序列化器</h4>
+<p>如果您使用Jackson序列化和反序列化JSON数据，则可能需要编写自己的JsonSerializer和JsonDeserializer类。 自定义序列化程序通常<a href="http://wiki.fasterxml.com/JacksonHowToCustomDeserializers">通过一个模块注册到Jackson</a>，但是Spring Boot提供了一个备用的@JsonComponent注释，可以更容易地直接注册Spring Bean。</p>
+<p>您可以直接在JsonSerializer或JsonDeserializer实现中使用@JsonComponent。 您也可以将它用于包含序列化器/解串器的类作为内部类。 例如：</p>
+<pre><code>import java.io.*;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.*;
+import org.springframework.boot.jackson.*;
+
+@JsonComponent
+public class Example {
+
+    public static class Serializer extends JsonSerializer&lt;SomeObject&gt; {
+        // ...
+    }
+
+    public static class Deserializer extends JsonDeserializer&lt;SomeObject&gt; {
+        // ...
+    }
+
+}
+</code></pre>
+
+<p>ApplicationContext中的所有@JsonComponent bean将自动注册到Jackson，并且由于@JsonComponent是使用@Component进行元注解的，所以常规的组件扫描规则适用。</p>
+<p>Spring Boot还提供了<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot/src/main/java/org/springframework/boot/jackson/JsonObjectSerializer.java">JsonObjectSerializer</a>和<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot/src/main/java/org/springframework/boot/jackson/JsonObjectDeserializer.java">JsonObjectDeserializer</a>基类，它们在序列化对象时为标准的Jackson版本提供了有用的替代方法。 有关详细信息，请参阅Javadoc。</p>
+<h4 id="2714-messagecodesresolver"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2714-messagecodesresolver"></a>27.1.4 MessageCodesResolver</h4>
+<p>Spring MVC有一个生成错误代码的策略，用于从绑定错误中提取错误消息：MessageCodesResolver。 Spring Boot将为您创建一个错误代码，如果您设置spring.mvc.message-codes-resolver.format属性PREFIX_ERROR_CODE或POSTFIX_ERROR_CODE（请参阅DefaultMessageCodesResolver.Format中的枚举）。</p>
+<h4 id="2715"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2715-静态内容"></a>27.1.5 静态内容</h4>
+<p>默认情况下，Spring Boot将从类路径或ServletContext的根目录中的名为/static（或/ public或/resources或/META-INF/resources）的目录提供静态内容。 它使用Spring MVC中的ResourceHttpRequestHandler，因此您可以通过添加自己的WebMvcConfigurerAdapter并覆盖addResourceHandlers方法来修改该行为。</p>
+<p>在独立的Web应用程序中，来自容器的默认servlet也被启用，并且作为后备，如果Spring决定不处理它，则从ServletContext的根目录提供内容。 大多数情况下，这不会发生（除非您修改默认的MVC配置），因为Spring将始终能够通过DispatcherServlet处理请求。</p>
+<p>默认情况下，资源映射到/<strong> ，但可以通过spring.mvc.static-path-pattern调整。 例如，将所有资源重定位到 /resources/</strong>可以配置如下：</p>
+<pre><code>spring.mvc.static-path-pattern=/resources/**
+</code></pre>
+
+<p>您还可以使用spring.resources.static-locations（使用目录位置列表替换默认值）来自定义静态资源位置。 如果这样做，默认欢迎页面检测将切换到您的自定义位置，因此，如果在启动时任何位置都有一个index.html，它将是应用程序的主页。</p>
+<p>除了上述“标准”静态资源位置之外，还提供了一个特殊情况，用于<a href="http://www.webjars.org/">Webjars内容</a>。 任何具有/ webjars / **中路径的资源都将从jar文件中提供，如果它们以Webjars格式打包。</p>
+<p>如果您的应用程序将被打包为jar，请不要使用 src/main/webapp 目录。 虽然这个目录是一个通用的标准，但它只适用于war包，如果生成一个jar，它将被大多数构建工具忽略。</p>
+<p>Spring Boot还支持Spring MVC提供的高级资源处理功能，允许使用例如缓存静态资源或使用Webjars的版本无关的URL。</p>
+<p>要为Webjars使用版本无关的URL，只需添加webjars-locator依赖关系即可。然后声明您的Webjar，以jQuery为例，如“/webjars/jquery/dist/jquery.min.js”，这将产生“/webjars/jquery/xyz/dist/jquery.min.js”，其中xyz是Webjar版本 。</p>
+<blockquote>
+<p>如果您使用JBoss，则需要声明webjars-locator-jboss-vfs依赖关系而不是webjars-locator; 否则所有Webjars都将解析为404。</p>
+</blockquote>
+<p>要使用缓存清除功能，以下配置将为所有静态资源配置缓存清除解决方案，从而有效地在URL中添加内容哈希值，例如&lt;link href=“/css/spring-2a2d595e6ed9a0b24f027f2b63b134d6.css”/&gt;：</p>
+<pre><code>spring.resources.chain.strategy.content.enabled=true
+spring.resources.chain.strategy.content.paths=/**
+</code></pre>
+
+<blockquote>
+<p>链接资源在运行时在模板中被重写，这归功于自动配置为Thymeleaf和FreeMarker的ResourceUrlEncodingFilter。 使用JSP时，应手动声明此过滤器。 其他模板引擎现在不会自动支持，但可以使用自定义模板宏/帮助程序和使用<a href="http://docs.spring.io/spring/docs/4.3.7.RELEASE/javadoc-api/org/springframework/web/servlet/resource/ResourceUrlProvider.html">ResourceUrlProvider</a>。</p>
+</blockquote>
+<p>当使用例如JavaScript模块加载器动态加载资源时，重命名文件不是一个选项。这就是为什么其他策略也得到支持并可以合并的原因。 “固定(fixed)”策略将在URL中添加静态版本字符串，而不更改文件名：</p>
+<pre><code>spring.resources.chain.strategy.content.enabled=true
+spring.resources.chain.strategy.content.paths=/**
+spring.resources.chain.strategy.fixed.enabled=true
+spring.resources.chain.strategy.fixed.paths=/js/lib/
+spring.resources.chain.strategy.fixed.version=v12
+</code></pre>
+
+<p>使用此配置，位于“/js/lib/”下的JavaScript模块将使用固定版本策略“/v12/js/lib/mymodule.js”，而其他资源仍将使用内容&lt;link href =“/css/“spring-2a2d595e6ed9a0b24f027f2b63b134d6.css”/&gt;。</p>
+<p>有关更多支持的选项，请参阅<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/ResourceProperties.java">ResourceProperties</a>。</p>
+<blockquote>
+<p>此功能已在专门的<a href="https://spring.io/blog/2014/07/24/spring-framework-4-1-handling-static-web-resources">博客文章</a>和Spring Framework<a href="http://docs.spring.io/spring/docs/4.3.7.RELEASE/spring-framework-reference/htmlsingle/#mvc-config-static-resources">参考文档</a>中进行了详细描述。</p>
+</blockquote>
+<h4 id="2716"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2716-自定义图标"></a>27.1.6 自定义图标</h4>
+<p>Spring Boot在配置的静态内容位置和类路径的根目录（按顺序）中查找favicon.ico。 如果文件存在，它将被自动用作应用程序的图标。</p>
+<h4 id="2717-configurablewebbindinginitializer"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2717-configurablewebbindinginitializer"></a>27.1.7 ConfigurableWebBindingInitializer</h4>
+<p>Spring MVC使用WebBindingInitializer为特定请求初始化WebDataBinder。 如果您用@Bean创建自己的ConfigurableWebBindingInitializer @Bean，Spring Boot将自动配置Spring MVC以使用它。</p>
+<h4 id="2718"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2718-模板引擎"></a>27.1.8 模板引擎</h4>
+<p>除了REST Web服务，您还可以使用Spring MVC来提供动态HTML内容。 Spring MVC支持各种模板技术，包括Thymeleaf，FreeMarker和JSP。 许多其他模板引擎也运行自己的Spring MVC集成。</p>
+<p>Spring Boot包括对以下模板引擎的自动配置支持：</p>
+<ul>
+<li><a href="http://freemarker.org/docs/">FreeMarker</a></li>
+<li><a href="http://docs.groovy-lang.org/docs/next/html/documentation/template-engines.html#_the_markuptemplateengine">Groovy</a></li>
+<li><a href="http://www.thymeleaf.org/">Thymeleaf</a></li>
+<li><a href="https://mustache.github.io/">Mustache</a></li>
+</ul>
+<blockquote>
+<p>如果可能，应避免使用JSP，当使用嵌入式servlet容器时，JSP有几个<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-jsp-limitations">已知的限制</a>。</p>
+</blockquote>
+<p>当您使用默认配置的模板引擎之一时，您的模板将从 src/main/resources/templates 自动获取。</p>
+<blockquote>
+<p>IntelliJ IDEA根据运行应用程序的方式对类路径进行不同的排序。 通过main方法在IDE中运行应用程序将导致使用Maven或Gradle打包的jar运行应用程序时的不同顺序。这可能会导致Spring Boot找不到类路径上的模板。 如果您受此问题的影响，您可以重新排序IDE中的类路径，以放置模块的类和资源。 或者，您可以配置模板前缀以搜索类路径上的每个模板目录：<code>classpath*:/templates/</code>。</p>
+</blockquote>
+<h4 id="2719"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2719-错误处理"></a>27.1.9 错误处理</h4>
+<p>默认情况下，Spring Boot提供 /error 映射，以合理的方式处理所有错误，并在servlet容器中注册为“global”错误页面。 对于机器客户端，它将产生JSON响应，其中包含错误，HTTP状态和异常消息的详细信息。 对于浏览器客户端，有一个'whitelabel'错误视图，以HTML格式呈现相同的数据（定制它只需添加一个解析“error”的视图）。 要完全替换默认行为，您可以实现ErrorController并注册该类型的bean定义，或者简单地添加一个类型为ErrorAttributes的bean来使用现有机制，但只是替换内容。</p>
+<blockquote>
+<p>BasicErrorController可以用作自定义ErrorController的基类。 如果要添加新内容类型的处理程序（默认情况下是专门处理text/html并为其他内容提供备选），这一点尤其有用。 要做到这一点，只需扩展BasicErrorController并添加一个带有@RequestMapping的公共方法，并创建一个新类型的bean。</p>
+</blockquote>
+<p>您还可以定义一个@ControllerAdvice来自定义为特定控制器 and/or 异常类型返回的JSON文档。</p>
+<pre><code>@ControllerAdvice(basePackageClasses = FooController.class)
+public class FooControllerAdvice extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(YourException.class)
+    @ResponseBody
+    ResponseEntity&lt;?&gt; handleControllerException(HttpServletRequest request, Throwable ex) {
+        HttpStatus status = getStatus(request);
+        return new ResponseEntity&lt;&gt;(new CustomErrorType(status.value(), ex.getMessage()), status);
+    }
+
+    private HttpStatus getStatus(HttpServletRequest request) {
+        Integer statusCode = (Integer) request.getAttribute(&quot;javax.servlet.error.status_code&quot;);
+        if (statusCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        return HttpStatus.valueOf(statusCode);
+    }
+
+}
+</code></pre>
+
+<p>在上面的示例中，如果由FooController在同一个包中定义的控件抛出了YourException，则将使用CustomerErrorType POJO的json表示法而不是ErrorAttributes表示形式。</p>
+<h5 id="_1"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#自定义错误页面"></a>自定义错误页面</h5>
+<p>如果要显示给定状态代码的自定义HTML错误页面，请将文件添加到/error文件夹。 错误页面可以是静态HTML（即添加在任何静态资源文件夹下）或使用模板构建。 该文件的名称应该是确切的状态代码或一个序列掩码。</p>
+<p>例如，要将404映射到静态HTML文件，您的文件夹结构将如下所示：</p>
+<pre><code>src/
+ +- main/
+     +- java/
+     |   + &lt;source code&gt;
+     +- resources/
+         +- public/
+             +- error/
+             |   +- 404.html
+             +- &lt;other public assets&gt;
+</code></pre>
+
+<p>要使用FreeMarker模板映射所有5xx错误，使用如下结构：</p>
+<pre><code>src/
+ +- main/
+     +- java/
+     |   + &lt;source code&gt;
+     +- resources/
+         +- templates/
+             +- error/
+             |   +- 5xx.ftl
+             +- &lt;other templates&gt;
+</code></pre>
+
+<p>对于更复杂的映射，您还可以添加实现ErrorViewResolver接口的bean。</p>
+<pre><code>public class MyErrorViewResolver implements ErrorViewResolver {
+
+    @Override
+    public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map&lt;String, Object&gt; model) {
+        // Use the request or status to optionally return a ModelAndView
+        return ...
+    }
+
+}
+</code></pre>
+
+<p>您还可以使用常规的Spring MVC功能，如<a href="http://docs.spring.io/spring/docs/4.3.7.RELEASE/spring-framework-reference/htmlsingle/#mvc-exceptionhandlers">@ExceptionHandler方法</a>和<a href="http://docs.spring.io/spring/docs/4.3.7.RELEASE/spring-framework-reference/htmlsingle/#mvc-ann-controller-advice">@ControllerAdvice</a>。 然后，ErrorController将接收任何未处理的异常。</p>
+<h5 id="spring-mvc"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#映射spring-mvc之外的错误页面"></a>映射Spring MVC之外的错误页面</h5>
+<p>对于不使用Spring MVC的应用程序，可以使用ErrorPageRegistrar接口来直接注册ErrorPages。这个抽象直接与底层的嵌入式servlet容器一起工作，即使没有Spring MVC DispatcherServlet也可以工作。</p>
+<pre><code>@Bean
+public ErrorPageRegistrar errorPageRegistrar(){
+    return new MyErrorPageRegistrar();
+}
+
+// ...
+
+private static class MyErrorPageRegistrar implements ErrorPageRegistrar {
+
+    @Override
+    public void registerErrorPages(ErrorPageRegistry registry) {
+        registry.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, &quot;/400&quot;));
+    }
+
+}
+</code></pre>
+
+<p>N.B. 如果您注册一个最终由Filter过滤的路径的ErrorPage（例如，像一些非Spring Web框架，例如Jersey和Wicket一样），则必须将Filter显式注册为ERROR dispatcher，例如。</p>
+<pre><code>@Bean
+public FilterRegistrationBean myFilter() {
+    FilterRegistrationBean registration = new FilterRegistrationBean();
+    registration.setFilter(new MyFilter());
+    ...
+    registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
+    return registration;
+}
+</code></pre>
+
+<p>（默认的FilterRegistrationBean不包括ERROR dispatcher 类型）。</p>
+<h5 id="websphere-application-server"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#websphere-application-server上的错误处理"></a>WebSphere Application Server上的错误处理</h5>
+<p>当部署到servlet容器时，Spring Boot会使用其错误页面过滤器将具有错误状态的请求转发到相应的错误页面。 如果响应尚未提交，则该请求只能转发到正确的错误页面。 默认情况下，WebSphere Application Server 8.0及更高版本在成功完成servlet的服务方法后提交响应。 您应该通过将<a href="http://com.ibm.ws">com.ibm.ws</a>.webcontainer.invokeFlushAfterService设置为false来禁用此行为</p>
+<h4 id="27110-spring-hateoas"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#27110-spring-hateoas"></a>27.1.10 Spring HATEOAS</h4>
+<p>如果您正在开发一种利用超媒体的RESTful API，Spring Boot可以为Spring HATEOAS提供自动配置，适用于大多数应用程序。 自动配置取代了使用@EnableHypermediaSupport的需求，并注册了一些Bean，以便轻松构建基于超媒体的应用程序，包括LinkDiscoverers（用于客户端支持）和配置为将响应正确地组织到所需表示中的ObjectMapper。 ObjectMapper将根据spring.jackson。*属性或Jackson2ObjectMapperBuilder bean（如果存在）进行自定义。</p>
+<p>您可以使用@EnableHypermediaSupport控制Spring HATEOAS配置。 请注意，这将禁用上述ObjectMapper定制。</p>
+<h4 id="27111-cors"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#27111-cors-支持"></a>27.1.11 CORS 支持</h4>
+<p><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing/">跨原始资源共享</a>（CORS）是<a href="http://note.youdao.com/">大多数浏览器</a>实现的<a href="http://caniuse.com/#feat=cors">W3C规范</a>，允许您以灵活的方式指定什么样的跨域请求被授权，而不是使用一些不太安全和不太强大的方法，如IFRAME或JSONP。</p>
+<p>从版本4.2起，Spring MVC支持CORS开箱即用。 在Spring Boot应用程序中的controller方法使用@CrossOrigin注解的CORS配置不需要任何特定的配置。 可以通过使用自定义的addCorsMappings(CorsRegistry)方法注册WebMvcConfigurer bean来定义全局CORS配置：</p>
+<pre><code>@Configuration
+public class MyConfiguration {
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping(&quot;/api/**&quot;);
+            }
+        };
+    }
+}
+</code></pre>
+
+<h3 id="272-jax-rs-jersey"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#272-jax-rs-和-jersey"></a>27.2 JAX-RS 和 Jersey</h3>
+<p>如果您喜欢JAX-RS编程模型的REST endpoints ，您可以使用一个可用的实现而不是Spring MVC。 如果您刚刚在应用程序上下文中注册了一个@Bean的Servlet或Filter，那么Jersey 1.x和Apache CXF的功能非常出色。 Jersey2.x有一些本地Spring支持，所以我们也提供自动配置支持它在Spring Boot与启动器。</p>
+<p>要开始使用Jersey 2.x，只需将spring-boot-starter-jersey作为依赖项，然后您需要一个@Bean类型ResourceConfig，您可以在其中注册所有端点(endpoints)：</p>
+<pre><code>@Component
+public class JerseyConfig extends ResourceConfig {
+
+    public JerseyConfig() {
+        register(Endpoint.class);
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<p>Jersey对扫描可执行档案的包是相当有限的。 例如，当运行可执行的war文件时，它无法扫描在WEB-INF/classes中找到的包中的端点(endpoints)。 为了避免这种限制，不应使<code>packages</code>方法，并且应使用上述寄存器方法单独注册(register)端点。</p>
+</blockquote>
+<p>您还可以注册任意数量的ResourceConfigCustomizer的实现bean，以实现更高级的自定义。</p>
+<p>所有注册的端点都应为具有HTTP资源注解（@GET等）的@Components，例如。</p>
+<pre><code>@Component
+@Path(&quot;/hello&quot;)
+public class Endpoint {
+
+    @GET
+    public String message() {
+        return &quot;Hello&quot;;
+    }
+
+}
+</code></pre>
+
+<p>由于Endpoint是一个Spring @Component，所以Spring的生命周期由Spring管理，您可以使用@Autowired依赖关系并使用@Value注入外部配置。 默认情况下，Jersey servlet将被注册并映射到/ *。 您可以通过将@ApplicationPath添加到ResourceConfig来更改映射。</p>
+<p>默认情况下，Jersey将通过@Bean以名为jerseyServletRegistration的ServletRegistrationBean类型在Servlet进行设置。 默认情况下，servlet将被初始化，但是您可以使用spring.jersey.servlet.load-on-startup进行自定义。您可以通过创建一个自己的同名文件来禁用或覆盖该bean。 您也可以通过设置spring.jersey.type = filter（在这种情况下，@Bean来替换或替换为jerseyFilterRegistration），使用Filter而不是Servlet。 servlet有一个@Order，您可以使用spring.jersey.filter.order设置。 可以使用spring.jersey.init.* 给出Servlet和过滤器注册的init参数，以指定属性的映射。</p>
+<p>有一个<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-samples/spring-boot-sample-jersey">Jersey示例</a>，所以你可以看到如何设置。 还有一个<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-samples/spring-boot-sample-jersey1">Jersey1.x示例</a>。 请注意，在Jersey1.x示例中，spring-boot maven插件已经被配置为打开一些Jersey jar，以便它们可以被JAX-RS实现扫描（因为示例要求它们在Filter注册中进行扫描） 。 如果您的任何JAX-RS资源作为嵌套的jar打包，您可能需要执行相同操作。</p>
+<h3 id="273-servlet"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#273-嵌入式servlet容器支持"></a>27.3 嵌入式servlet容器支持</h3>
+<p>Spring Boot包括对嵌入式Tomcat，Jetty和Undertow服务器的支持。 大多数开发人员将简单地使用适当的“Starter”来获取完全配置的实例。 默认情况下，嵌入式服务器将监听端口8080上的HTTP请求。</p>
+<blockquote>
+<p>如果您选择在CentOS上使用Tomcat，请注意，默认情况下，临时目录用于存储已编译的JSP，文件上传等。当您的应用程序正在运行导致故障时，该目录可能会被tmpwatch删除。 为了避免这种情况，您可能需要自定义tmpwatch配置，以便tomcat.*目录不被删除，或配置server.tomcat.basedir，以便嵌入式Tomcat使用不同的位置</p>
+</blockquote>
+<h4 id="2731-servlets-filters-listeners"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2731-servlets-filters-和-listeners"></a>27.3.1 Servlets, Filters 和 listeners</h4>
+<p>当使用嵌入式servlet容器时，可以使用Spring bean或通过扫描Servlet组件（例如HttpSessionListener）注册Servlet规范中的Servlet，过滤器和所有监听器。</p>
+<p>将Servlets，过滤器和监听器注册为Spring bean</p>
+<p>任何Servlet，Filter或Servlet Listener 实例都会作为Spring bean注册到嵌入式容器中。 可以非常方便地在配置过程中引用您的application.properties中的值。</p>
+<p>默认情况下，如果容器中只包含一个Servlet，它将映射到/。 在多个Servlet bean的情况下，bean名称将作为路径前缀。 过滤器(Filters)将映射到/*，默认过滤所有请求。</p>
+<p>如果基于惯例的映射不够灵活，可以使用ServletRegistrationBean，FilterRegistrationBean和ServletListenerRegistrationBean类来完成控制。</p>
+<h4 id="2732-servlet-context"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2732-servlet-context-初始化"></a>27.3.2 Servlet Context 初始化</h4>
+<p>嵌入式servlet容器不会直接执行Servlet 3.0+ javax.servlet.ServletContainerInitializer接口或Spring的org.springframework.web.WebApplicationInitializer接口。 这样设计的目的旨在降低在war中运行的第三方库破坏Spring Boot应用程序的风险。</p>
+<p>如果您需要在Spring Boot应用程序中执行servlet context 初始化，则应注册一个实现org.springframework.boot.context.embedded.ServletContextInitializer接口的bean。 单个onStartup方法提供对ServletContext的访问，并且如果需要，可以轻松地用作现有WebApplicationInitializer的适配器。</p>
+<p>扫描Servlet，过滤器和监听器</p>
+<p>使用嵌入式容器时，可以使用@ServletComponentScan启用@WebServlet，@WebFilter和@WebListener注解类的自动注册。</p>
+<blockquote>
+<p>@ServletComponentScan在独立容器中不起作用，在该容器中将使用容器的内置发现机制。</p>
+</blockquote>
+<h4 id="2733-embeddedwebapplicationcontext"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2733-embeddedwebapplicationcontext"></a>27.3.3 EmbeddedWebApplicationContext</h4>
+<p>在Spring Boot引导下，将会使用一种新类型的ApplicationContext来支持嵌入式的servlet容器。 EmbeddedWebApplicationContext是一种特殊类型的WebApplicationContext，它通过搜索单个EmbeddedServletContainerFactory bean来引导自身。 通常，TomcatEmbeddedServletContainerFactory，JettyEmbeddedServletContainerFactory或UndertowEmbeddedServletContainerFactory将被自动配置。</p>
+<blockquote>
+<p>您通常不需要知道这些实现类。 大多数应用程序将被自动配置，并将代表您创建适当的ApplicationContext和EmbeddedServletContainerFactory。</p>
+</blockquote>
+<h4 id="2734-servlet"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2734-定制嵌入式servlet容器"></a>27.3.4 定制嵌入式servlet容器</h4>
+<p>可以使用Spring Environment属性配置常见的servlet容器设置。 通常您可以在application.properties文件中定义属性。</p>
+<p>常用服务器设置包括：</p>
+<ul>
+<li>网络设置：侦听端口的HTTP请求（server.port），接口地址绑定到server.address等。</li>
+<li>会话设置：会话是否持久化（server.session.persistence），会话超时（server.session.timeout），会话数据的位置（server.session.store-dir）和session-cookie配置（server.session.cookie.*）。</li>
+<li>错误管理：错误页面的位置（server.error.path）等</li>
+<li><a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#howto-configure-ssl">SSL</a></li>
+<li><a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#how-to-enable-http-response-compression">HTTP压缩</a></li>
+</ul>
+<p>Spring Boot尽可能地尝试公开常见设置，但并不总是可能的。 对于这些情况，专用命名空间提供服务器特定的定制（请参阅server.tomcat和server.undertow）。 例如，可以使用嵌入式servlet容器的特定功能来配置<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#howto-configure-accesslogs">访问日志</a>。</p>
+<blockquote>
+<p>有关完整列表，请参阅 <a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/ServerProperties.java">ServerProperties</a> 类。</p>
+</blockquote>
+<p>用程序定制</p>
+<p>如果需要以编程方式配置嵌入式servlet容器，您可以注册一个实现EmbeddedServletContainerCustomizer接口的Spring bean。 EmbeddedServletContainerCustomizer提供对ConfigurableEmbeddedServletContainer的访问，其中包含许多自定义设置方法。</p>
+<pre><code>import org.springframework.boot.context.embedded.*;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CustomizationBean implements EmbeddedServletContainerCustomizer {
+
+    @Override
+    public void customize(ConfigurableEmbeddedServletContainer container) {
+        container.setPort(9000);
+    }
+
+}
+</code></pre>
+
+<p>直接自定义ConfigurableEmbeddedServletContainer</p>
+<p>如果上述定制技术有太多限制，您可以自己注册TomcatEmbeddedServletContainerFactory，JettyEmbeddedServletContainerFactory或UndertowEmbeddedServletContainerFactory bean。</p>
+<pre><code>@Bean
+public EmbeddedServletContainerFactory servletContainer() {
+    TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
+    factory.setPort(9000);
+    factory.setSessionTimeout(10, TimeUnit.MINUTES);
+    factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, &quot;/notfound.html&quot;));
+    return factory;
+}
+</code></pre>
+
+<p>setter方法提供了许多配置选项。 如果您需要做更多的自定义，还会提供几种保护方法“钩子”。 有关详细信息，请参阅源代码文档。</p>
+<h4 id="2735-jsp"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2735-jsp限制"></a>27.3.5 JSP限制</h4>
+<p>当运行使用嵌入式servlet容器（并打包为可执行文档）的Spring Boot应用程序时，对JSP支持有一些限制。</p>
+<ul>
+<li>可以使用Tomcat和war包，即可执行的war将会起作用，并且也可以部署到标准容器（不限于但包括Tomcat）中。 由于Tomcat中的硬编码文件模式，可执行的jar将无法正常工作。</li>
+<li>可以使用Jetty和war包，即可执行的war将会起作用,并且也可以部署到任何标准的容器，它应该可以工作。</li>
+<li>Undertow不支持JSP。</li>
+<li>创建自定义的error.jsp页面将不会覆盖默认视图以进行<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-error-handling">错误处理</a>，而应使用<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-error-handling-custom-error-pages">自定义错误页面</a>。</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/spring-boot-doc-zh/" target="_blank">apachecn/spring-boot-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'spring-boot-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../23/" title="26. 日志" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                26. 日志
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../25/" title="28. Security" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                28. Security
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1050 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Spring Boot 1.5.2 中文文档">
+      
+      
+        <link rel="canonical" href="http://spring-boot.apachecn.org/25/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>28. Security - Spring Boot 1.5.2 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f272a2ddc7c0d8fe7ea0ebce50ed44d3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#2846-security" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Spring Boot 1.5.2 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                28. Security
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Spring Boot 1.5.2 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Spring Boot 1.5.2 中文文档" class="md-nav__link">
+      Spring Boot 1.5.2 中文文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="Part I. Spring Boot 文档" class="md-nav__link">
+      Part I. Spring Boot 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="Part II. 入门指南" class="md-nav__link">
+      Part II. 入门指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="8. Spring Boot 介绍" class="md-nav__link">
+      8. Spring Boot 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="9. 系统要求" class="md-nav__link">
+      9. 系统要求
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="10. 安装 Spring Boot" class="md-nav__link">
+      10. 安装 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="11. 开发您的第一个Spring Boot应用程序" class="md-nav__link">
+      11. 开发您的第一个Spring Boot应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="12. 接下来应该读什么" class="md-nav__link">
+      12. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Part III. 使用 Spring Boot" class="md-nav__link">
+      Part III. 使用 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="13. 构建系统" class="md-nav__link">
+      13. 构建系统
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="14. 构建代码" class="md-nav__link">
+      14. 构建代码
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="15. 配置类" class="md-nav__link">
+      15. 配置类
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="16. 自动配置" class="md-nav__link">
+      16. 自动配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="17. Spring Beans 和 依赖注入" class="md-nav__link">
+      17. Spring Beans 和 依赖注入
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="18. 使用@SpringBootApplication注解" class="md-nav__link">
+      18. 使用@SpringBootApplication注解
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="19. 运行你的应用程序" class="md-nav__link">
+      19. 运行你的应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../16/" title="20. 开发工具" class="md-nav__link">
+      20. 开发工具
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="21. 包装您的应用程序到生产环境" class="md-nav__link">
+      21. 包装您的应用程序到生产环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="22. 接下来应该读什么" class="md-nav__link">
+      22. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="Part IV. Spring Boot 功能" class="md-nav__link">
+      Part IV. Spring Boot 功能
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="23. SpringApplication" class="md-nav__link">
+      23. SpringApplication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../21/" title="24. 外部配置" class="md-nav__link">
+      24. 外部配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="25. 配置文件(Profiles)" class="md-nav__link">
+      25. 配置文件(Profiles)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../23/" title="26. 日志" class="md-nav__link">
+      26. 日志
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../24/" title="27. 开发Web应用程序" class="md-nav__link">
+      27. 开发Web应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        28. Security
+      </label>
+    
+    <a href="./" title="28. Security" class="md-nav__link md-nav__link--active">
+      28. Security
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#281-oauth2" title="28.1 OAuth2" class="md-nav__link">
+    28.1 OAuth2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2811" title="28.1.1 授权服务器" class="md-nav__link">
+    28.1.1 授权服务器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2812" title="28.1.2 资源服务器" class="md-nav__link">
+    28.1.2 资源服务器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#282-user-info" title="28.2 User Info中的令牌类型" class="md-nav__link">
+    28.2 User Info中的令牌类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#283-resttemplate" title="28.3 自定义用户信息RestTemplate" class="md-nav__link">
+    28.3 自定义用户信息RestTemplate
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2831-client" title="28.3.1 Client" class="md-nav__link">
+    28.3.1 Client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2832" title="28.3.2 单点登录" class="md-nav__link">
+    28.3.2 单点登录
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#284-actuator-security" title="28.4 Actuator Security" class="md-nav__link">
+    28.4 Actuator Security
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="29. 使用SQL数据库" class="md-nav__link">
+      29. 使用SQL数据库
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#281-oauth2" title="28.1 OAuth2" class="md-nav__link">
+    28.1 OAuth2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2811" title="28.1.1 授权服务器" class="md-nav__link">
+    28.1.1 授权服务器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2812" title="28.1.2 资源服务器" class="md-nav__link">
+    28.1.2 资源服务器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#282-user-info" title="28.2 User Info中的令牌类型" class="md-nav__link">
+    28.2 User Info中的令牌类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#283-resttemplate" title="28.3 自定义用户信息RestTemplate" class="md-nav__link">
+    28.3 自定义用户信息RestTemplate
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2831-client" title="28.3.1 Client" class="md-nav__link">
+    28.3.1 Client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2832" title="28.3.2 单点登录" class="md-nav__link">
+    28.3.2 单点登录
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#284-actuator-security" title="28.4 Actuator Security" class="md-nav__link">
+    28.4 Actuator Security
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/spring-boot-doc-zh/edit/master/docs/25.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="2846-security">28. Security</h1>
+<p>如果Spring Security位于类路径上，则默认情况下，Web应用程序将在所有HTTP端点上使用“basic”身份验证。 要向Web应用程序添加方法级安全性，您还可以使用所需的设置添加@EnableGlobalMethodSecurity。 有关更多信息，请参见“<a href="http://docs.spring.io/spring-security/site/docs/4.2.2.RELEASE/reference/htmlsingle#jc-method">Spring Security Reference</a>”。</p>
+<p>默认的AuthenticationManager有一个用户（用户名'user'和随机密码，在应用程序启动时以INFO级别打印）</p>
+<pre><code>Using default security password: 78fa095d-3f4c-48b1-ad50-e24c31d5cf35
+</code></pre>
+
+<blockquote>
+<p>如果您调整日志记录配置，请确保将org.springframework.boot.autoconfigure.security类别设置为记录INFO消息，否则将不会打印默认密码。</p>
+</blockquote>
+<p>您可以通过提供security.user.password来更改密码。 这个和其他有用的属性通过 <a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/SecurityProperties.java">SecurityProperties</a>（属性前缀“security”）进行外部化。</p>
+<p>默认的安全配置在SecurityAutoConfiguration和从那里导入的类中实现（用于Web安全的SpringBootWebSecurityConfiguration和用于认证配置的AuthenticationManagerConfiguration，这在非Web应用程序中也是相关的）。 要完全关闭默认的Web应用程序安全配置，您可以使用@EnableWebSecurity添加一个bean（这不会禁用身份验证管理器配置或Actuator的安全性）。 要定制它，您通常使用WebSecurityConfigurerAdapter类型的外部属性和bean（例如添加基于表单的登录）。 要关闭身份验证管理器配置，您可以添加AuthenticationManager类型的bean，或者通过将AuthenticationManagerBuilder自动连接到您的一个@Configuration类中的方法来配置全局AuthenticationManager。 Spring Boot示例中有几个安全应用程序可以让您开始使用常见的<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-samples/">用例</a>。</p>
+<p>您在Web应用程序中获得的基本功能包括：</p>
+<ul>
+<li>具有内存存储和单个用户的AuthenticationManager Bean（请参阅用于用户属性的SecurityProperties.User）。</li>
+<li>对于常见的静态资源位置，忽略（不安全）路径(/css/<strong>, /js/</strong>, /images/<strong>, /webjars/</strong> and **/favicon.ico)。</li>
+<li>HTTP所有其他端点的baseic security 。</li>
+<li>安全事件发布到Spring的ApplicationEventPublisher（成功、不成功的身份验证、拒绝访问）。</li>
+<li>默认情况下，Spring Security提供的常见的底层功能（HSTS，XSS，CSRF，缓存）都是打开的。</li>
+</ul>
+<p>所有上述可以使用外部属性（security.*）打开、关闭或修改。 要覆盖访问规则而不更改任何其他自动配置的功能，请添加一个带有@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)的WebSecurityConfigurerAdapter类型的Bean，并配置它以满足您的需要。</p>
+<blockquote>
+<p>默认情况下，WebSecurityConfigurerAdapter将匹配任何路径。 如果您不想完全覆盖Spring Boot自动配置的访问规则，您的适配器必须显式配置您要覆盖的路径。</p>
+</blockquote>
+<h3 id="281-oauth2"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#281-oauth2"></a>28.1 OAuth2</h3>
+<p>如果您的类路径中有spring-security-oauth2，您可以利用一些自动配置来轻松设置授权或资源服务器。 有关完整的详细信息，请参阅“<a href="http://projects.spring.io/spring-security-oauth/docs/oauth2.html">Spring Security OAuth 2开发人员指南</a>”。</p>
+<h4 id="2811"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2811-授权服务器"></a>28.1.1 授权服务器</h4>
+<p>要创建授权服务器并授予访问令牌，您需要使用@EnableAuthorizationServer并提供security.oauth2.client.client-id和security.oauth2.client.client-secret]属性。 客户端将为您注册在内存中。</p>
+<pre><code>$ curl client:secret@localhost:8080/oauth/token -d grant_type=password -d username=user -d password=pwd
+</code></pre>
+
+<p>/token 端点的基本身份验证凭证是client-id和client-secret。 用户凭据是普通的Spring Security用户details （在Spring引导中默认为“user”和随机密码）。</p>
+<p>要关闭自动配置并自行配置授权服务器功能，只需添加一个类型为AuthorizationServerConfigurer的@Bean。</p>
+<h4 id="2812"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2812-资源服务器"></a>28.1.2 资源服务器</h4>
+<p>要使用访问令牌(token)，您需要一个资源服务器（可以与授权服务器相同）。 创建资源服务器很简单，只需添加@EnableResourceServer并提供一些配置，以允许服务器解码访问令牌。 如果您的应用程序也是授权服务器，则它已经知道如何解码令牌，无需做其他事情。 如果你的应用程序是一个独立的服务，那么你需要给它一些更多的配置，以下选项之一：</p>
+<ul>
+<li>security.oauth2.resource.user-info-uri使用/me资源（例如PWS上的</li>
+<li>security.oauth2.resource.token-info-uri使用令牌解码端点（例如，PWS上的</li>
+</ul>
+<p>如果您同时指定user-info-uri和token-info-uri，那么您可以设置一个标志，表示优先于另一个（prefer-token-inf=true是默认值）。</p>
+<p>或者（不是user-info-uri或token-info-uri的情况）如果令牌是JWT，您可以配置security.oauth2.resource.jwt.key-value来本地解码（key是验证密钥verification key）。 验证密钥值是对称秘密或PEM编码的RSA公钥。 如果您没有密钥，并且它是公开的，您可以提供一个可以使用security.oauth2.resource.jwt.key-uri下载的URI（具有“value”字段的JSON对象）。 例如在PWS上：</p>
+<pre><code>$ curl https://uaa.run.pivotal.io/token_key
+{&quot;alg&quot;:&quot;SHA256withRSA&quot;,&quot;value&quot;:&quot;-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n&quot;}
+</code></pre>
+
+<p>如果您使用security.oauth2.resource.jwt.key-uri，则应用程序启动时需要运行授权服务器。 如果找不到密钥，它将记录一个警告，并告诉您如何解决该问题。</p>
+<blockquote>
+<p>如果您使用security.oauth2.resource.jwt.key-uri，则应用程序启动时需要运行授权服务器。 如果找不到密钥，它将会在日志记录一个警告，并告诉您如何解决该问题。</p>
+</blockquote>
+<p>OAuth2资源由order security.oauth2.resource.filter-order的过滤器链保护，默认情况下保护执行器(actuator)端点的过滤器（所以执行器(actuator)端点将保留在HTTP Basic上，除非更改顺序）。</p>
+<h3 id="282-user-info"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#282-user-info中的令牌类型"></a>28.2 User Info中的令牌类型</h3>
+<p>Google和某些其他第三方身份认证提供商对在header中发送到用户信息端点的令牌类型名称更为严格。 默认值为“Bearer”，适合大多数提供程序并匹配规范，但如果需要更改，可以设置security.oauth2.resource.token-type。</p>
+<h3 id="283-resttemplate"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#283-自定义用户信息resttemplate"></a>28.3 自定义用户信息RestTemplate</h3>
+<p>如果您有user-info-uri，则资源服务器功能在内部使用OAuth2RestTemplate来获取用户身份验证信息。 这是以UserInfoRestTemplateFactory类型的@Bean提供的。 大多数提供程序的默认值应该是能满足正常使用，但有时您可能需要添加其他拦截器，或者更改请求验证器（例如：令牌如何附加到传出请求）。 进行自定义，只需创建一个类型为UserInfoRestTemplateCustomizer的bean - 它具有一个方法，在bean创建之后但在初始化之前将被调用。 这里定制的rest模板只能在内部进行验证。 或者，您可以定义自己的UserInfoRestTemplateFactory @Bean来完全控制。</p>
+<p>要在YAML中设置RSA密钥值，请使用“pipe”继续标记将其分割成多行（“|”），并记住缩进键值（它是标准的 YAML 语言功能）。 例：</p>
+<pre><code>security:
+    oauth2:
+        resource:
+            jwt:
+                keyValue: |
+                    -----BEGIN PUBLIC KEY-----
+                    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC...
+                    -----END PUBLIC KEY-----
+</code></pre>
+
+<h4 id="2831-client"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2831-client"></a>28.3.1 Client</h4>
+<p>要使您的 web-app 进入OAuth2客户端，您可以简单地添加@ EnableOAuth2Client，Spring Boot将创建一个OAuth2ClientContext和OAuth2ProtectedResourceDetails，这些是创建OAuth2RestOperations所必需的。 Spring Boot不会自动创建这样的bean，但是您可以轻松创建自己的bean：</p>
+<pre><code>@Bean
+public OAuth2RestTemplate oauth2RestTemplate(OAuth2ClientContext oauth2ClientContext, OAuth2ProtectedResourceDetails details) {
+    return new OAuth2RestTemplate(details, oauth2ClientContext);
+}
+</code></pre>
+
+<blockquote>
+<p>您可能需要添加限定符并查看您的配置，因为您的应用程序可能会定义多个RestTemplate。</p>
+</blockquote>
+<p>此配置使用security.oauth2.client.*作为凭据（可能与授权服务器中使用的相同），但另外还需要知道授权服务器中的授权和令牌URI。 例如：</p>
+<p>application.yml.</p>
+<pre><code>security:
+    oauth2:
+        client:
+            clientId: bd1c0a783ccdd1c9b9e4
+            clientSecret: 1a9030fbca47a5b2c28e92f19050bb77824b5ad1
+            accessTokenUri: https://github.com/login/oauth/access_token
+            userAuthorizationUri: https://github.com/login/oauth/authorize
+            clientAuthenticationScheme: form
+</code></pre>
+
+<p>当您尝试使用OAuth2RestTemplate时，具有此配置的应用程序将重定向到Github进行授权。 如果您已经登录Github，您甚至不会注意到它已经被认证。 如果您的应用程序在端口8080上运行（在Github或其他提供商注册自己的客户端应用程序以获得更大的灵活性），这些特定的凭据才会起作用。</p>
+<p>要限制客户端在获取访问令牌时要求的范围，您可以设置security.oauth2.client.scope（逗号分隔或YAML中的数组）。 默认情况下，scope是空的，由授权服务器决定其默认值，通常取决于客户端注册中的设置。</p>
+<blockquote>
+<p>还有一个security.oauth2.client.client-authentication-scheme的设置，默认为“header”（但是如果像Github那样，您可能需要将其设置为“form”，例如，您的OAuth2提供程序不喜欢header 认证）。 事实上，security.oauth2.client.*属性绑定到AuthorizationCodeResourceDetails的一个实例，因此可以指定其所有的属性。</p>
+<p>在非Web应用程序中，您仍然可以创建一个OAuth2RestOperations，它仍然连接到security.oauth2.client.*配置中。 在这种情况下，它是一个“客户端凭据令牌授予”，您如果使用它就请求它（并且不需要使用@EnableOAuth2Client或@EnableOAuth2Sso）。为了防止定义基础设施，只需从配置中删除security.oauth2.client.client-id（或使其成为空字符串）。</p>
+</blockquote>
+<h4 id="2832"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2832-单点登录"></a>28.3.2 单点登录</h4>
+<p>OAuth2客户端可用于从提供商获取用户详细信息（如果此类功能可用），然后将其转换为Spring Security的身份验证令牌。 以上资源服务器通过user-info-uri属性支持此功能这是基于OAuth2的单点登录（SSO）协议的基础，Spring Boot可以通过提供@ EnableOAuth2Sso注解来轻松加入。 上面的Github客户端可以通过添加该注释并声明在何处查找端点（除了上面列出的security.oauth2.client.*配置）外，还可以保护所有资源并使用Github/user/endpoint进行身份验证：</p>
+<p>application.yml.</p>
+<pre><code>security:
+    oauth2:
+...
+    resource:
+        userInfoUri: https://api.github.com/user
+        preferTokenInfo: false
+</code></pre>
+
+<p>由于默认情况下所有路径都是安全的，所以没有可以向未经身份验证的用户显示“家”页面，并邀请他们登录（通过访问/登录路径或由security.oauth2.sso.login-path指定的路径） 。</p>
+<p>由于默认情况下所有路径都是要求安全的，所以没有可以向未经身份验证的用户显示“home”页面，并邀请他们登录（通过访问/login 路径或由security.oauth2.sso.login-path指定的路径） 。</p>
+<p>要自定义保护的访问规则或路径，因此您可以添加“home”页面，例如，@EnableOAuth2Sso可以添加到WebSecurityConfigurerAdapter，并且注解将使其被修饰和增强，以使所需的/login路径可以工作。 例如，这里我们简单地允许未经身份验证的访问“/"下的主页面，并保留其他所有内容的默认值：</p>
+<pre><code>@Configuration
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Override
+    public void init(WebSecurity web) {
+        web.ignore(&quot;/&quot;);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.antMatcher(&quot;/**&quot;).authorizeRequests().anyRequest().authenticated();
+    }
+
+}
+</code></pre>
+
+<h3 id="284-actuator-security"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#284-actuator-security"></a>28.4 Actuator Security</h3>
+<p>如果Actuator也在使用中，您会发现：</p>
+<ul>
+<li>即使应用程序端点不安全，管理端点也是安全的。</li>
+<li>Security 事件将转换为AuditEvent实例，并发布到AuditEventRepository。</li>
+<li>默认用户将具有ACTUATOR角色以及USER角色。</li>
+</ul>
+<p>Actuator的安全功能可以使用外部属性（management.security.*）进行修改。要覆盖应用程序访问规则，请添加一个类型为WebSecurityConfigurerAdapter的@Bean，如果您不想覆盖执行程序访问规则，则使用@Order（SecurityProperties.ACCESS_OVERRIDE_ORDER）或@Order（ManagementServerProperties.ACCESS_OVERRIDE_ORDER）覆盖执行器访问规则。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/spring-boot-doc-zh/" target="_blank">apachecn/spring-boot-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'spring-boot-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../24/" title="27. 开发Web应用程序" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                27. 开发Web应用程序
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../26/" title="29. 使用SQL数据库" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                29. 使用SQL数据库
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

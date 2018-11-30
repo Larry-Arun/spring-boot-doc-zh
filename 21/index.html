@@ -1,0 +1,1547 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Spring Boot 1.5.2 中文文档">
+      
+      
+        <link rel="canonical" href="http://spring-boot.apachecn.org/21/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>24. 外部配置 - Spring Boot 1.5.2 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f272a2ddc7c0d8fe7ea0ebce50ed44d3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#2446" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Spring Boot 1.5.2 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                24. 外部配置
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Spring Boot 1.5.2 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Spring Boot 1.5.2 中文文档" class="md-nav__link">
+      Spring Boot 1.5.2 中文文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="Part I. Spring Boot 文档" class="md-nav__link">
+      Part I. Spring Boot 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="Part II. 入门指南" class="md-nav__link">
+      Part II. 入门指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="8. Spring Boot 介绍" class="md-nav__link">
+      8. Spring Boot 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="9. 系统要求" class="md-nav__link">
+      9. 系统要求
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="10. 安装 Spring Boot" class="md-nav__link">
+      10. 安装 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="11. 开发您的第一个Spring Boot应用程序" class="md-nav__link">
+      11. 开发您的第一个Spring Boot应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="12. 接下来应该读什么" class="md-nav__link">
+      12. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Part III. 使用 Spring Boot" class="md-nav__link">
+      Part III. 使用 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="13. 构建系统" class="md-nav__link">
+      13. 构建系统
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="14. 构建代码" class="md-nav__link">
+      14. 构建代码
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="15. 配置类" class="md-nav__link">
+      15. 配置类
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="16. 自动配置" class="md-nav__link">
+      16. 自动配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="17. Spring Beans 和 依赖注入" class="md-nav__link">
+      17. Spring Beans 和 依赖注入
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="18. 使用@SpringBootApplication注解" class="md-nav__link">
+      18. 使用@SpringBootApplication注解
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="19. 运行你的应用程序" class="md-nav__link">
+      19. 运行你的应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../16/" title="20. 开发工具" class="md-nav__link">
+      20. 开发工具
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="21. 包装您的应用程序到生产环境" class="md-nav__link">
+      21. 包装您的应用程序到生产环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="22. 接下来应该读什么" class="md-nav__link">
+      22. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="Part IV. Spring Boot 功能" class="md-nav__link">
+      Part IV. Spring Boot 功能
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="23. SpringApplication" class="md-nav__link">
+      23. SpringApplication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        24. 外部配置
+      </label>
+    
+    <a href="./" title="24. 外部配置" class="md-nav__link md-nav__link--active">
+      24. 外部配置
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#241" title="24.1 配置随机值" class="md-nav__link">
+    24.1 配置随机值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#242" title="24.2 访问命令行属性" class="md-nav__link">
+    24.2 访问命令行属性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#243" title="24.3 应用程序属性文件" class="md-nav__link">
+    24.3 应用程序属性文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#244-profile-specific" title="24.4 指定配置(Profile-specific)的属性" class="md-nav__link">
+    24.4 指定配置(Profile-specific)的属性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#245-properties" title="24.5 properties 文件中的占位符" class="md-nav__link">
+    24.5 properties 文件中的占位符
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#246-yaml-properties" title="24.6 使用YAML替代 Properties" class="md-nav__link">
+    24.6 使用YAML替代 Properties
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2461-yaml" title="24.6.1 加载 YAML" class="md-nav__link">
+    24.6.1 加载 YAML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2462-yamlspring" title="24.6.2 将YAML作为Spring环境中的属性文件" class="md-nav__link">
+    24.6.2 将YAML作为Spring环境中的属性文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2463-yaml" title="24.6.3 多个YAML文件" class="md-nav__link">
+    24.6.3 多个YAML文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2464-yaml" title="24.6.4 YAML的缺点" class="md-nav__link">
+    24.6.4 YAML的缺点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2465-yaml" title="24.6.5 合并YAML列表" class="md-nav__link">
+    24.6.5 合并YAML列表
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#247" title="24.7 类型安全的配置属性" class="md-nav__link">
+    24.7 类型安全的配置属性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2471" title="24.7.1第三方配置" class="md-nav__link">
+    24.7.1第三方配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2472" title="24.7.2 宽松的绑定" class="md-nav__link">
+    24.7.2 宽松的绑定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2473" title="24.7.3属性转换" class="md-nav__link">
+    24.7.3属性转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2474-configurationproperties" title="24.7.4 @ConfigurationProperties验证" class="md-nav__link">
+    24.7.4 @ConfigurationProperties验证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2475-configurationproperties-value" title="24.7.5 @ConfigurationProperties 对比 @Value" class="md-nav__link">
+    24.7.5 @ConfigurationProperties 对比 @Value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="25. 配置文件(Profiles)" class="md-nav__link">
+      25. 配置文件(Profiles)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../23/" title="26. 日志" class="md-nav__link">
+      26. 日志
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../24/" title="27. 开发Web应用程序" class="md-nav__link">
+      27. 开发Web应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../25/" title="28. Security" class="md-nav__link">
+      28. Security
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="29. 使用SQL数据库" class="md-nav__link">
+      29. 使用SQL数据库
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#241" title="24.1 配置随机值" class="md-nav__link">
+    24.1 配置随机值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#242" title="24.2 访问命令行属性" class="md-nav__link">
+    24.2 访问命令行属性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#243" title="24.3 应用程序属性文件" class="md-nav__link">
+    24.3 应用程序属性文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#244-profile-specific" title="24.4 指定配置(Profile-specific)的属性" class="md-nav__link">
+    24.4 指定配置(Profile-specific)的属性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#245-properties" title="24.5 properties 文件中的占位符" class="md-nav__link">
+    24.5 properties 文件中的占位符
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#246-yaml-properties" title="24.6 使用YAML替代 Properties" class="md-nav__link">
+    24.6 使用YAML替代 Properties
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2461-yaml" title="24.6.1 加载 YAML" class="md-nav__link">
+    24.6.1 加载 YAML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2462-yamlspring" title="24.6.2 将YAML作为Spring环境中的属性文件" class="md-nav__link">
+    24.6.2 将YAML作为Spring环境中的属性文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2463-yaml" title="24.6.3 多个YAML文件" class="md-nav__link">
+    24.6.3 多个YAML文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2464-yaml" title="24.6.4 YAML的缺点" class="md-nav__link">
+    24.6.4 YAML的缺点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2465-yaml" title="24.6.5 合并YAML列表" class="md-nav__link">
+    24.6.5 合并YAML列表
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#247" title="24.7 类型安全的配置属性" class="md-nav__link">
+    24.7 类型安全的配置属性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2471" title="24.7.1第三方配置" class="md-nav__link">
+    24.7.1第三方配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2472" title="24.7.2 宽松的绑定" class="md-nav__link">
+    24.7.2 宽松的绑定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2473" title="24.7.3属性转换" class="md-nav__link">
+    24.7.3属性转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2474-configurationproperties" title="24.7.4 @ConfigurationProperties验证" class="md-nav__link">
+    24.7.4 @ConfigurationProperties验证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2475-configurationproperties-value" title="24.7.5 @ConfigurationProperties 对比 @Value" class="md-nav__link">
+    24.7.5 @ConfigurationProperties 对比 @Value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/spring-boot-doc-zh/edit/master/docs/21.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="2446">24. 外部配置</h1>
+<p>Spring Boot允许您外部化您的配置，以便您可以在不同的环境中使用相同的应用程序代码。 您可以使用properties文件，YAML文件，环境变量和命令行参数来外部化配置。 可以使用@Value注释将属性值直接注入到您的bean中，该注释可通过Spring环境(Environment)抽象访问，或通过@ConfigurationProperties<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-typesafe-configuration-properties">绑定到结构化对象</a>。</p>
+<p>Spring Boot使用非常特别的PropertySource命令，旨在允许合理地覆盖值。属性按以下顺序选择：</p>
+<ol>
+<li>在您的HOME目录设置的<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-devtools-globalsettings">Devtools全局属性</a>（~/.spring-boot-devtools.properties）。</li>
+<li>单元测试中的 <a href="http://docs.spring.io/spring/docs/4.3.7.RELEASE/javadoc-api/org/springframework/test/context/TestPropertySource.html">@TestPropertySource</a> 注解。</li>
+<li>单元测试中的 <a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/api/spring-boot-test/src/main/java/org/springframework/boot/test/context/SpringBootTest.html">@SpringBootTest#properties</a> 注解属性</li>
+<li>命令行参数。</li>
+<li>SPRING_APPLICATION_JSON 中的属性值（内嵌JSON嵌入到环境变量或系统属性中）。</li>
+<li>ServletConfig 初始化参数。</li>
+<li>ServletContext 初始化参数。</li>
+<li>来自 java:comp/env 的JNDI属性。</li>
+<li>Java系统属性（System.getProperties()）。</li>
+<li>操作系统环境变量。</li>
+<li>RandomValuePropertySource，只有随机的属性 random.* 中。</li>
+<li>jar包外面的 <a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-profile-specific-properties">Profile-specific application properties</a> （application- {profile} .properties和YAML变体）</li>
+<li>jar包内的 <a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-profile-specific-properties">Profile-specific application properties</a> （application-{profile}.properties和YAML变体）</li>
+<li>jar包外的应用属性文件（application.properties和YAML变体）。</li>
+<li>jar包内的应用属性文件（application.properties和YAML变体）。</li>
+<li>在@Configuration上的@PropertySource注解。</li>
+<li>默认属性（使用SpringApplication.setDefaultProperties设置）。</li>
+</ol>
+<p>一个具体的例子，假设你开发一个使用name属性的@Component：</p>
+<pre><code>import org.springframework.stereotype.*
+import org.springframework.beans.factory.annotation.*
+
+@Component
+public class MyBean {
+
+    @Value(&quot;${name}&quot;)
+    private String name;
+
+    // ...
+
+}
+</code></pre>
+
+<p>在应用程序类路径（例如，您的jar中）中，您可以拥有一个application.properties，它为 name 属性提供了默认属性值。 在新环境中运行时，可以在您的jar外部提供一个application.properties来覆盖 name 属性; 对于一次性测试，您可以使用特定的命令行开关启动（例如，java -jar app.jar --name="Spring"）。</p>
+<p>SPRING_APPLICATION_JSON属性可以在命令行中提供一个环境变量。 例如在UN*X shell中：</p>
+<pre><code>$ SPRING_APPLICATION_JSON='{&quot;foo&quot;:{&quot;bar&quot;:&quot;spam&quot;}}' java -jar myapp.jar
+</code></pre>
+
+<p>在本例中，您将在Spring环境中使用foo.bar = spam。 您也可以在系统变量中将JSON作为spring.application.json提供：</p>
+<pre><code>$ java -Dspring.application.json='{&quot;foo&quot;:&quot;bar&quot;}' -jar myapp.jar
+</code></pre>
+
+<p>或命令行参数：</p>
+<pre><code>$ java -jar myapp.jar --spring.application.json='{&quot;foo&quot;:&quot;bar&quot;}'
+</code></pre>
+
+<p>或作为JNDI变量 java:comp/env/spring.application.json 。</p>
+<h3 id="241"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#241-配置随机值"></a>24.1 配置随机值</h3>
+<p>RandomValuePropertySource可用于注入随机值（例如，进入秘密或测试用例）。 它可以产生整数，长整数，uuid或字符串，例如</p>
+<pre><code>my.secret=${random.value}
+my.number=${random.int}
+my.bignumber=${random.long}
+my.uuid=${random.uuid}
+my.number.less.than.ten=${random.int(10)}
+my.number.in.range=${random.int[1024,65536]}
+</code></pre>
+
+<p><a href="http://random.int">random.int</a> *语法是 OPEN value (,max) CLOSE ，其中OPEN，CLOSE是任何字符和值，max是整数。 如果提供max，则值为最小值，max为最大值（独占）。</p>
+<h3 id="242"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#242-访问命令行属性"></a>24.2 访问命令行属性</h3>
+<p>默认情况下，SpringApplication将任何命令行选项参数（以'-- '开头，例如--server.port=9000）转换为属性，并将其添加到Spring环境中。 如上所述，命令行属性始终优先于其他属性来源。</p>
+<p>如果不希望将命令行属性添加到环境中，可以使用SpringApplication.setAddCommandLineProperties(false)禁用它们。</p>
+<h3 id="243"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#243-应用程序属性文件"></a>24.3 应用程序属性文件</h3>
+<p>SpringApplication将从以下位置的application.properties文件中加载属性，并将它们添加到Spring Environment中：</p>
+<ol>
+<li>当前目录的/config子目录</li>
+<li>当前目录</li>
+<li>classpath中/config包</li>
+<li>classpath root路径</li>
+</ol>
+<p>该列表按优先级从高到低排序。</p>
+<blockquote>
+<p>也可以<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-yaml">使用YAML（'.yml'）文件</a>替代“.properties”。</p>
+</blockquote>
+<p>如果您不喜欢application.properties作为配置文件名，<a href="http://xn--spring-9m7igl21dt6y8qu0luc56kg7a.config.name/">可以通过指定一个spring.config.name</a> Spring environment属性来切换到另一个。 您还可以使用spring.config.location环境属性（用逗号分隔的目录位置列表或文件路径）显式引用位置。</p>
+<pre><code>$ java -jar myproject.jar --spring.config.name=myproject
+</code></pre>
+
+<p>或</p>
+<pre><code>$ java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties
+</code></pre>
+
+<blockquote>
+<p><a href="http://spring.config.name">spring.config.name</a>和spring.config.location一开始就被用于确定哪些文件必须被加载，因此必须将它们定义为环境属性（通常是OS env，system属性或命令行参数）。</p>
+</blockquote>
+<p>如果spring.config.location包含的如果是目录而非文件，那么它们应该以/结尾（并将在加载之前附加从<a href="http://spring.config.name">spring.config.name</a>生成的名称，包括profile-specific的文件名）。 在spring.config.location中指定的文件按原样使用，不支持特定于配置文件的变体，并且将被任何特定于配置文件的属性覆盖。</p>
+<p>默认的搜索路径 classpath:,<a href="http://classpath/config,file:,file:config/">classpath:/config,file:,file:config/</a> 始终会被搜索，不管spring.config.location的值如何。 该搜索路径从优先级排序从低到高（file:config/最高）。 如果您指定自己的位置，则它们优先于所有默认位置，并使用相同的从最低到最高优先级排序。 这样，您可以在application.properties（或使用<a href="http://spring.config.name">spring.config.name</a>选择的任何其他基础名称）中为应用程序设置默认值，并在运行时使用不同的文件覆盖它，并保留默认值。</p>
+<blockquote>
+<p>如果您使用环境(environment)变量而不是系统属性，大多数操作系统不允许使用句点分隔(period-separated)的键名称，但可以使用下划线（例如，SPRING_CONFIG_NAME，<a href="http://xn--spring-vp7io16nrw9b.config.name/">而不是spring.config.name</a>）</p>
+<p>如果您运行在容器中，则可以使用JNDI属性（在 java:comp/env 中）或servlet上下文初始化参数，而不是环境变量或系统属性。</p>
+</blockquote>
+<h3 id="244-profile-specific"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#244-指定配置profile-specific的属性"></a>24.4 指定配置(Profile-specific)的属性</h3>
+<p>除了application.properties文件外，还可以使用命名约定application- {profile}.properties定义的指定配置文件。 环境具有一组默认配置文件，如果没有设置活动配置文件（即，如果没有显式激活配置文件，则加载了来自application-default.properties的属性）。</p>
+<p>指定配置文件（Profile-specific）的属性从与标准application.properties相同的位置加载，指定配置( profile-specific)文件始终覆盖非指定文件，而不管指定配置文件是否在打包的jar内部或外部。</p>
+<p>如果有几个指定配置文件，则应用最后一个配置。 例如，由spring.profiles.active属性指定的配置文件在通过SpringApplication API配置的配置之后添加，因此优先级高。</p>
+<blockquote>
+<p>如果您在spring.config.location中指定了任何文件，则不会考虑这些特定配置(profile-specific)文件的变体。 如果您还想使用指定配置(profile-specific)文件的属性，请使用<code>spring.config.location</code>中的目录。</p>
+</blockquote>
+<h3 id="245-properties"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#245-properties-文件中的占位符"></a>24.5 properties 文件中的占位符</h3>
+<p>application.properties中的值在使用时通过已有的环境进行过滤，以便您可以引用之前定义的值（例如，从系统属性）。</p>
+<pre><code>app.name=MyApp
+app.description=${app.name} is a Spring Boot application
+</code></pre>
+
+<blockquote>
+<p>您也可以使用此技术创建现有Spring Boot属性的“简写“。 有关详细信息，请参见<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#howto-use-short-command-line-arguments">第72.4节“使用”短命令行参数“how-to”</a>。</p>
+</blockquote>
+<h3 id="246-yaml-properties"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#246-使用yaml替代-properties"></a>24.6 使用YAML替代 Properties</h3>
+<p><a href="http://yaml.org/">YAML</a>是JSON的超集，因此这是分层配置数据一种非常方便的格式，。 每当您的类路径中都有<a href="http://www.snakeyaml.org/">SnakeYAML</a>库时，SpringApplication类将自动支持YAML作为 properties 的替代方法。</p>
+<blockquote>
+<p>如果您使用“Starters”，SnakeYAML将通过spring-boot-starter自动提供。</p>
+</blockquote>
+<h4 id="2461-yaml"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2461-加载-yaml"></a>24.6.1 加载 YAML</h4>
+<p>Spring Framework提供了两个方便的类，可用于加载YAML文档。 <code>YamlPropertiesFactoryBean</code>将YAML作为<code>Properties</code>加载，<code>YamlMapFactoryBean</code>将YAML作为Map加载。</p>
+<p>例如，下面YAML文档：</p>
+<pre><code>environments:
+    dev:
+        url: http://dev.bar.com
+        name: Developer Setup
+    prod:
+        url: http://foo.bar.com
+        name: My Cool App
+</code></pre>
+
+<p>将转化为属性：</p>
+<pre><code>environments.dev.url=http://dev.bar.com
+environments.dev.name=Developer Setup
+environments.prod.url=http://foo.bar.com
+environments.prod.name=My Cool App
+</code></pre>
+
+<p>YAML列表表示为具有[index] dereferencers的属性键，例如YAML：</p>
+<pre><code>my:
+   servers:
+       - dev.bar.com
+       - foo.bar.com
+</code></pre>
+
+<p>将转化为属性：</p>
+<pre><code>my.servers[0]=dev.bar.com
+my.servers[1]=foo.bar.com
+</code></pre>
+
+<p>要使用Spring DataBinder工具（@ConfigurationProperties做的）绑定到这样的属性，您需要有一个属性类型为java.util.List（或Set）的目标bean，并且您需要提供一个setter，或者 用可变值初始化它，例如 这将绑定到上面的属性</p>
+<pre><code>@ConfigurationProperties(prefix=&quot;my&quot;)
+public class Config {
+
+    private List&lt;String&gt; servers = new ArrayList&lt;String&gt;();
+
+    public List&lt;String&gt; getServers() {
+        return this.servers;
+    }
+}
+</code></pre>
+
+<h4 id="2462-yamlspring"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2462-将yaml作为spring环境中的属性文件"></a>24.6.2 将YAML作为Spring环境中的属性文件</h4>
+<p>可以使用YamlPropertySourceLoader类在Spring环境中将YAML作为PropertySource暴露出来。 这允许您使用熟悉的@Value注解和占位符语法来访问YAML属性。</p>
+<h4 id="2463-yaml"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2463-多个yaml文件"></a>24.6.3 多个YAML文件</h4>
+<p>您可以使用<code>spring.profiles</code>键指定单个文件中的多个特定配置文件YAML文档，以指示文档何时应用。 例如：</p>
+<pre><code>server:
+    address: 192.168.1.100
+---
+spring:
+    profiles: development
+server:
+    address: 127.0.0.1
+---
+spring:
+    profiles: production
+server:
+    address: 192.168.1.120
+</code></pre>
+
+<p>在上面的示例中，如果开发配置文件处于活动状态，则server.address属性将为127.0.0.1。 如果开发和生产配置文件未启用，则该属性的值将为192.168.1.100。</p>
+<p>如果应用程序上下文启动时没有显式激活，默认配置文件将被激活。 所以在这个YAML中，我们为security.user.password设置一个仅在“默认”配置文件中可用的值：</p>
+<pre><code>server:
+  port: 8000
+---
+spring:
+  profiles: default
+security:
+  user:
+    password: weak
+</code></pre>
+
+<p>使用“spring.profiles”元素指定的Spring profiles 以选择使用<code>！</code> 字符。 如果为单个文档指定了否定和非否定的配置文件，则至少有一个非否定配置文件必须匹配，没有否定配置文件可能匹配。</p>
+<h4 id="2464-yaml"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2464-yaml的缺点"></a>24.6.4 YAML的缺点</h4>
+<p>YAML文件无法通过@PropertySource注解加载。 因此，在需要以这种方式加载值的情况下，需要使用properties文件。</p>
+<h4 id="2465-yaml"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2465-合并yaml列表"></a>24.6.5 合并YAML列表</h4>
+<p><a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-loading-yaml">如上所述</a>，任何YAML内容最终都会转换为属性。 当通过配置文件覆盖“列表”属性时，该过程可能比较直观。</p>
+<p>例如，假设名称和描述属性默认为空的MyPojo对象。 让我们从FooProperties中公开MyPojo的列表：</p>
+<pre><code>@ConfigurationProperties(&quot;foo&quot;)
+public class FooProperties {
+
+    private final List&lt;MyPojo&gt; list = new ArrayList&lt;&gt;();
+
+    public List&lt;MyPojo&gt; getList() {
+        return this.list;
+    }
+
+}
+</code></pre>
+
+<p>类比以下配置：</p>
+<pre><code>foo:
+  list:
+    - name: my name
+      description: my description
+---
+spring:
+  profiles: dev
+foo:
+  list:
+    - name: my another name
+</code></pre>
+
+<p>如果dev配置没有激活，FooProperties.list将包含一个如上定义的MyPojo条目。 如果启用了配置文件，列表仍将包含一个条目（名称为“my another name”，description=null）。 此配置不会将第二个MyPojo实例添加到列表中，并且不会将项目合并。</p>
+<p>当在多个配置文件中指定集合时，使用具有最高优先级的集合（并且仅使用该配置文件）：</p>
+<pre><code>foo:
+  list:
+    - name: my name
+      description: my description
+    - name: another name
+      description: another description
+---
+spring:
+  profiles: dev
+foo:
+  list:
+     - name: my another name
+</code></pre>
+
+<p>在上面的示例中，考虑到dev配置文件处于激活状态，FooProperties.list将包含一个MyPojo条目（名称为“my another name”和description=null）。</p>
+<h3 id="247"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#247-类型安全的配置属性"></a>24.7 类型安全的配置属性</h3>
+<p>使用@Value(“${property}”)注释来注入配置属性有时可能很麻烦，特别是如果您正在使用多个层次结构的属性或数据时。 Spring Boot提供了一种处理属性的替代方法，允许强类型Bean管理并验证应用程序的配置。</p>
+<pre><code>package com.example;
+
+import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties(&quot;foo&quot;)
+public class FooProperties {
+
+    private boolean enabled;
+
+    private InetAddress remoteAddress;
+
+    private final Security security = new Security();
+
+    public boolean isEnabled() { ... }
+
+    public void setEnabled(boolean enabled) { ... }
+
+    public InetAddress getRemoteAddress() { ... }
+
+    public void setRemoteAddress(InetAddress remoteAddress) { ... }
+
+    public Security getSecurity() { ... }
+
+    public static class Security {
+
+        private String username;
+
+        private String password;
+
+        private List&lt;String&gt; roles = new ArrayList&lt;&gt;(Collections.singleton(&quot;USER&quot;));
+
+        public String getUsername() { ... }
+
+        public void setUsername(String username) { ... }
+
+        public String getPassword() { ... }
+
+        public void setPassword(String password) { ... }
+
+        public List&lt;String&gt; getRoles() { ... }
+
+        public void setRoles(List&lt;String&gt; roles) { ... }
+
+    }
+}
+</code></pre>
+
+<p>上述POJO定义了以下属性：</p>
+<ul>
+<li>foo.enabled，默认为false</li>
+<li>foo.remote-address，具有可以从String强转的类型</li>
+<li>foo.security.username，具有内置的“安全性(security)”，其名称由属性名称决定。 特别是返回类型并没有被使用，可能是SecurityProperties</li>
+<li>foo.security.password</li>
+<li>foo.security.roles，一个String集合</li>
+</ul>
+<p>Getters和setter方法通常是必须要有的，因为绑定是通过标准的Java Beans属性描述符，就像在Spring MVC中一样。 在某些情况下可能会省略setter方法：</p>
+<ul>
+<li>Map 只要它们被初始化，需要一个getter，但不一定是一个setter，因为它们可以被binder修改。</li>
+<li>集合和数组可以通过索引（通常使用YAML）或使用单个逗号分隔值（Properties中）来访问。 在后一种情况下，setter方法是强制性的。 我们建议总是为这样的类型添加一个设置器。 如果您初始化集合，请确保它不是不可变的（如上例所示）</li>
+<li>如果已初始化嵌套POJO属性（如上例中的Security字段），则不需要setter方法。如果您希望binder使用其默认构造函数即时创建实例，则需要一个setter。</li>
+</ul>
+<p>有些人使用Project Lombok自动添加getter和setter。 确保Lombok不会为这种类型生成任何特定的构造函数，因为构造函将被容器自动用于实例化对象。</p>
+<blockquote>
+<p>另请参阅<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-vs-value">@Value和@ConfigurationProperties之间的不同</a>。</p>
+</blockquote>
+<p>您还需要列出在<code>@EnableConfigurationProperties</code>注解中注册的属性类：</p>
+<pre><code>@Configuration
+@EnableConfigurationProperties(FooProperties.class)
+public class MyConfiguration {
+}
+</code></pre>
+
+<blockquote>
+<p>当<code>@ConfigurationProperties</code> bean以这种方式注册时，该bean将具有常规名称：<code>&amp;lt;prefix&amp;gt; - &amp;lt;fqn&amp;gt;</code>，其中&lt;prefix&gt;是@ConfigurationProperties注解中指定的环境密钥前缀，&lt;fqn&gt;是bean的全名(fully qualified name)。 如果注解不提供任何前缀，则仅使用该bean的全名。上面示例中的bean名称将是foo-com.example.FooProperties。</p>
+</blockquote>
+<p>即使上述配置将为FooProperties创建一个常规bean，我们建议@ConfigurationProperties仅处理环境，特别是不从上下文中注入其他bean。 话虽如此，@EnableConfigurationProperties注释也会自动应用于您的项目，以便使用@ConfigurationProperties注释的任何现有的bean都将从环境配置。 您可以通过确保FooProperties已经是一个bean来快速上面的MyConfiguration</p>
+<pre><code>@Component
+@ConfigurationProperties(prefix=&quot;foo&quot;)
+public class FooProperties {
+
+    // ... see above
+
+}
+</code></pre>
+
+<p>这种配置方式与SpringApplication外部的YAML配置相当：</p>
+<pre><code># application.yml
+
+foo:
+    remote-address: 192.168.1.1
+    security:
+        username: foo
+        roles:
+          - USER
+          - ADMIN
+
+# additional configuration as required
+</code></pre>
+
+<p>要使用@ConfigurationProperties bean，您可以像其他任何bean一样注入它们。</p>
+<pre><code>@Service
+public class MyService {
+
+    private final FooProperties properties;
+
+    @Autowired
+    public MyService(FooProperties properties) {
+        this.properties = properties;
+    }
+
+     //...
+
+    @PostConstruct
+    public void openConnection() {
+        Server server = new Server(this.properties.getRemoteAddress());
+        // ...
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<p>使用@ConfigurationProperties还可以生成IDE可以为自己的密钥提供自动完成的元数据文件，有关详细信息，请参见<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#configuration-metadata">附录B，配置元数据附录</a>。</p>
+</blockquote>
+<h4 id="2471"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2471第三方配置"></a>24.7.1第三方配置</h4>
+<p>除了使用@ConfigurationProperties来注解类，还可以在public @Bean方法中使用它。 当您希望将属性绑定到不受控制的第三方组件时，这可能特别有用。</p>
+<pre><code>@ConfigurationProperties(prefix = &quot;bar&quot;)
+@Bean
+public BarComponent barComponent() {
+    ...
+}
+</code></pre>
+
+<p>使用 bar 前缀定义的任何属性将以与上述FooProperties示例类似的方式映射到该BarComponent bean。</p>
+<h4 id="2472"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2472-宽松的绑定"></a>24.7.2 宽松的绑定</h4>
+<p>Spring Boot使用一些宽松的规则将环境属性绑定到@ConfigurationProperties bean，因此不需要在Environment属性名称和bean属性名称之间进行完全匹配。 常用的例子是这样有用的：虚分离（例如上下文路径绑定到contextPath）和大写（例如PORT绑定到端口）环境属性。</p>
+<p>例如，给定以下@ConfigurationProperties类：</p>
+<pre><code>@ConfigurationProperties(prefix=&quot;person&quot;)
+public class OwnerProperties {
+
+    private String firstName;
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+}
+</code></pre>
+
+<p>可以使用以下属性名称：</p>
+<p>表格 24.1. relaxed binding</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>person.firstName</td>
+<td>标准骆峰命名法。</td>
+</tr>
+<tr>
+<td>person.first-name</td>
+<td>虚线符号，推荐用于.properties和.yml文件。</td>
+</tr>
+<tr>
+<td>person.first_name</td>
+<td>下划线符号，用于.properties和.yml文件的替代格式。</td>
+</tr>
+<tr>
+<td>PERSON_FIRST_NAME</td>
+<td>大写格式 推荐使用系统环境变量时。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2473"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2473属性转换"></a>24.7.3属性转换</h4>
+<p>当Spring绑定到@ConfigurationProperties bean时，Spring将尝试将外部应用程序属性强制为正确的类型。 如果需要自定义类型转换，您可以提供ConversionService bean（使用bean id conversionService）或自定义属性编辑器（通过CustomEditorConfigurer bean）或自定义转换器（使用注释为@ConfigurationPropertiesBinding的bean定义）。</p>
+<blockquote>
+<p>由于在应用程序生命周期期间非常早请求此Bean，请确保限制ConversionService正在使用的依赖关系。 通常，您需要的任何依赖关系可能无法在创建时完全初始化。 如果配置密钥强制不需要，只需依赖使用@ConfigurationPropertiesBinding限定的自定义转换器，就可以重命名自定义ConversionService。</p>
+</blockquote>
+<h4 id="2474-configurationproperties"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2474-configurationproperties验证"></a>24.7.4 @ConfigurationProperties验证</h4>
+<p>当Spring的@Validated注释解时，Spring Boot将尝试验证@ConfigurationProperties类。 您可以直接在配置类上使用JSR-303 javax.validation约束注释。 只需确保您的类路径中符合JSR-303实现，然后在您的字段中添加约束注释：</p>
+<pre><code>@ConfigurationProperties(prefix=&quot;foo&quot;)
+@Validated
+public class FooProperties {
+
+    @NotNull
+    private InetAddress remoteAddress;
+
+    // ... getters and setters
+
+}
+</code></pre>
+
+<p>为了验证嵌套属性的值，您必须将关联字段注释为@Valid以触发其验证。 例如，基于上述FooProperties示例：</p>
+<pre><code>@ConfigurationProperties(prefix=&quot;connection&quot;)
+@Validated
+public class FooProperties {
+
+    @NotNull
+    private InetAddress remoteAddress;
+
+    @Valid
+    private final Security security = new Security();
+
+    // ... getters and setters
+
+    public static class Security {
+
+        @NotEmpty
+        public String username;
+
+        // ... getters and setters
+
+    }
+
+}
+</code></pre>
+
+<p>您还可以通过创建名为configurationPropertiesValidator的bean定义来添加自定义的Spring Validator。 @Bean方法应声明为static。 配置属性验证器在应用程序的生命周期早期创建，并声明@Bean方法，因为static允许创建bean，而无需实例化@Configuration类。 这避免了早期实例化可能引起的任何问题。 这里有一个<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-samples/spring-boot-sample-property-validation">属性验证的例子</a>，所以你可以看到如何设置。</p>
+<blockquote>
+<p><code>spring-boot-actuator</code>模块包括一个暴露所有@ConfigurationProperties bean的端点。 只需将您的Web浏览器指向/configprops 或使用等效的JMX端点。 请参阅<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#production-ready-endpoints">生产就绪功能</a> 细节。</p>
+</blockquote>
+<h4 id="2475-configurationproperties-value"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2475-configurationproperties-对比-value"></a>24.7.5 @ConfigurationProperties 对比 @Value</h4>
+<p>@Value是核心容器功能，它不提供与类型安全配置属性相同的功能。 下表总结了@ConfigurationProperties和@Value支持的功能：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>@ConfigurationProperties</th>
+<th>@Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relaxed binding</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Meta-data support</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SpEL evaluation</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>如果您为自己的组件定义了一组配置密钥，我们建议您将其分组到使用@ConfigurationProperties注释的POJO中。 还请注意，由于@Value不支持宽松的绑定，如果您需要使用环境变量提供值，那么它不是一个很好的选择。</p>
+<p>最后，当您可以在@Value中编写一个Spel表达式时，这些表达式不会从<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files">应用程序属性文件</a>中处理。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/spring-boot-doc-zh/" target="_blank">apachecn/spring-boot-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'spring-boot-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../20/" title="23. SpringApplication" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                23. SpringApplication
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../22/" title="25. 配置文件(Profiles)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                25. 配置文件(Profiles)
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

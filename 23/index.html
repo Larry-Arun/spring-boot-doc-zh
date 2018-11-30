@@ -1,0 +1,1160 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Spring Boot 1.5.2 中文文档">
+      
+      
+        <link rel="canonical" href="http://spring-boot.apachecn.org/23/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>26. 日志 - Spring Boot 1.5.2 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f272a2ddc7c0d8fe7ea0ebce50ed44d3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#2646" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Spring Boot 1.5.2 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                26. 日志
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Spring Boot 1.5.2 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Spring Boot 1.5.2 中文文档" class="md-nav__link">
+      Spring Boot 1.5.2 中文文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="Part I. Spring Boot 文档" class="md-nav__link">
+      Part I. Spring Boot 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="Part II. 入门指南" class="md-nav__link">
+      Part II. 入门指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="8. Spring Boot 介绍" class="md-nav__link">
+      8. Spring Boot 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="9. 系统要求" class="md-nav__link">
+      9. 系统要求
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="10. 安装 Spring Boot" class="md-nav__link">
+      10. 安装 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="11. 开发您的第一个Spring Boot应用程序" class="md-nav__link">
+      11. 开发您的第一个Spring Boot应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="12. 接下来应该读什么" class="md-nav__link">
+      12. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Part III. 使用 Spring Boot" class="md-nav__link">
+      Part III. 使用 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="13. 构建系统" class="md-nav__link">
+      13. 构建系统
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="14. 构建代码" class="md-nav__link">
+      14. 构建代码
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="15. 配置类" class="md-nav__link">
+      15. 配置类
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="16. 自动配置" class="md-nav__link">
+      16. 自动配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="17. Spring Beans 和 依赖注入" class="md-nav__link">
+      17. Spring Beans 和 依赖注入
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="18. 使用@SpringBootApplication注解" class="md-nav__link">
+      18. 使用@SpringBootApplication注解
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="19. 运行你的应用程序" class="md-nav__link">
+      19. 运行你的应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../16/" title="20. 开发工具" class="md-nav__link">
+      20. 开发工具
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="21. 包装您的应用程序到生产环境" class="md-nav__link">
+      21. 包装您的应用程序到生产环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="22. 接下来应该读什么" class="md-nav__link">
+      22. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="Part IV. Spring Boot 功能" class="md-nav__link">
+      Part IV. Spring Boot 功能
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="23. SpringApplication" class="md-nav__link">
+      23. SpringApplication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../21/" title="24. 外部配置" class="md-nav__link">
+      24. 外部配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="25. 配置文件(Profiles)" class="md-nav__link">
+      25. 配置文件(Profiles)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        26. 日志
+      </label>
+    
+    <a href="./" title="26. 日志" class="md-nav__link md-nav__link--active">
+      26. 日志
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#261" title="26.1 日志格式" class="md-nav__link">
+    26.1 日志格式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#262" title="26.2 控制台输出" class="md-nav__link">
+    26.2 控制台输出
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2621" title="26.2.1 日志颜色输出" class="md-nav__link">
+    26.2.1 日志颜色输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#263" title="26.3 文件输出" class="md-nav__link">
+    26.3 文件输出
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#264" title="26.4 日志级别" class="md-nav__link">
+    26.4 日志级别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#265" title="26.5 自定义日志配置" class="md-nav__link">
+    26.5 自定义日志配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#266-logback" title="26.6 Logback扩展" class="md-nav__link">
+    26.6 Logback扩展
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2661" title="26.6.1 指定配置文件配置" class="md-nav__link">
+    26.6.1 指定配置文件配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2662" title="26.6.2 环境属性" class="md-nav__link">
+    26.6.2 环境属性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../24/" title="27. 开发Web应用程序" class="md-nav__link">
+      27. 开发Web应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../25/" title="28. Security" class="md-nav__link">
+      28. Security
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="29. 使用SQL数据库" class="md-nav__link">
+      29. 使用SQL数据库
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#261" title="26.1 日志格式" class="md-nav__link">
+    26.1 日志格式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#262" title="26.2 控制台输出" class="md-nav__link">
+    26.2 控制台输出
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2621" title="26.2.1 日志颜色输出" class="md-nav__link">
+    26.2.1 日志颜色输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#263" title="26.3 文件输出" class="md-nav__link">
+    26.3 文件输出
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#264" title="26.4 日志级别" class="md-nav__link">
+    26.4 日志级别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#265" title="26.5 自定义日志配置" class="md-nav__link">
+    26.5 自定义日志配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#266-logback" title="26.6 Logback扩展" class="md-nav__link">
+    26.6 Logback扩展
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2661" title="26.6.1 指定配置文件配置" class="md-nav__link">
+    26.6.1 指定配置文件配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2662" title="26.6.2 环境属性" class="md-nav__link">
+    26.6.2 环境属性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/spring-boot-doc-zh/edit/master/docs/23.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="2646">26. 日志</h1>
+<p>Spring Boot使用<a href="https://commons.apache.org/logging">Commons Logging</a>进行所有内部日志记录，但使基础日志实现开放。 默认配置提供了<a href="https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html">Java Util Logging</a>，<a href="https://logging.apache.org/log4j/2.x/">Log4J2</a>和<a href="http://logback.qos.ch/">Logback</a>。 在每种情况下，记录器都预先配置为使用控制台输出和可选文件输出都可用。</p>
+<p>默认情况下，如果使用'Starters'，将会使用Logback。 还包括适当的Logback路由，以确保使用Java Util Logging，Commons Logging，Log4J或SLF4J的依赖库都能正常工作。</p>
+<blockquote>
+<p>有很多可用于Java的日志记录框架。 如果上面的列表看起来很混乱，别担心。 一般来说，您不需要更改日志依赖关系，并且Spring Boot默认值将正常工作。</p>
+</blockquote>
+<h3 id="261"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#261-日志格式"></a>26.1 日志格式</h3>
+<p>Spring Boot的默认日志输出如下所示：</p>
+<pre><code>2014-03-05 10:57:51.112  INFO 45469 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/7.0.52
+2014-03-05 10:57:51.253  INFO 45469 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2014-03-05 10:57:51.253  INFO 45469 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1358 ms
+2014-03-05 10:57:51.698  INFO 45469 --- [ost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2014-03-05 10:57:51.702  INFO 45469 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+</code></pre>
+
+<p>输出以下项目：</p>
+<ul>
+<li>日期和时间 - 毫秒精度并且容易排序。</li>
+<li>日志级别 - ERROR, WARN, INFO, DEBUG, TRACE.</li>
+<li>进程ID。</li>
+<li>---分隔符来区分实际日志消息的开始。</li>
+<li>线程名称 - 括在方括号中（可能会截断控制台输出）。</li>
+<li>记录器名称 - 这通常是源类名（通常缩写）。</li>
+<li>日志消息。</li>
+</ul>
+<blockquote>
+<p>Logback没有FATAL级别（对映ERROR）</p>
+</blockquote>
+<h3 id="262"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#262-控制台输出"></a>26.2 控制台输出</h3>
+<p>默认的日志配置会在控制台显示消息。 默认情况下会记录ERROR，WARN和INFO级别的消息。 您还可以通过--debug启动您的应用程序来启用“debug”模式。</p>
+<pre><code>$ java -jar myapp.jar --debug
+</code></pre>
+
+<blockquote>
+<p>您还可以在application.properties中指定debug=true。</p>
+</blockquote>
+<p>当启用debug模式时，配置核心记录器（嵌入式容器，Hibernate和Spring Boot）的选择可以输出更多信息。 启用debug 模式不会将应用程序配置为使用DEBUG级别记录所有消息。</p>
+<p>或者，您可以使用--trace启动应用程序（或在您的application.properties中为trace=true）启用“trace”模式。 这将为核心记录器（嵌入式容器，Hibernate模式生成和整个Spring组合）启用trace日志。</p>
+<h4 id="2621"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2621-日志颜色输出"></a>26.2.1 日志颜色输出</h4>
+<p>如果您的终端支持ANSI，颜色输出可以增加可读性。 您可以将spring.output.ansi.enabled设置为<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/api/org/springframework/boot/ansi/AnsiOutput.Enabled.html">支持的值</a>来覆盖自动检测。</p>
+<p>使用％clr关键字配置颜色编码。 在最简单的形式下，转换器将根据日志级别对输出进行着色，例如：</p>
+<pre><code>%clr(%5p)
+</code></pre>
+
+<p>日志级别映射到颜色如下：</p>
+<ul>
+<li>blue</li>
+<li>cyan</li>
+<li>faint</li>
+<li>green</li>
+<li>magenta</li>
+<li>red</li>
+<li>yellow</li>
+</ul>
+<h3 id="263"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#263-文件输出"></a>26.3 文件输出</h3>
+<p>默认情况下，Spring Boot将仅将日志输出到控制台，不会写到文件。 如果要将控制台上的日志输出到日志文件，则需要设置logging.file或logging.path属性（例如在application.properties中）。</p>
+<p>下表显示了如何一起使用logging.*属性：</p>
+<p>表26.1 Logging属性</p>
+<table>
+<thead>
+<tr>
+<th>logging.file</th>
+<th>logging.path</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(none)</td>
+<td>(none)</td>
+<td> </td>
+<td>仅控制台输出</td>
+</tr>
+<tr>
+<td>Specific file</td>
+<td>(none)</td>
+<td>my.log</td>
+<td>写入指定的日志文件。 名称可以是确切的位置或相对于当前目录。</td>
+</tr>
+<tr>
+<td>(none)</td>
+<td>Specific directory</td>
+<td>/var/log</td>
+<td>将spring.log写入指定的目录。 名称可以是确切的位置或相对于当前目录。</td>
+</tr>
+</tbody>
+</table>
+<p>日志文件将在10 MB时滚动输出到文件，默认情况下会记录控制台输出，ERROR，WARN和INFO级别的消息。</p>
+<blockquote>
+<p>日志记录系统在应用程序生命周期早期初始化，并且在通过@PropertySource注解加载的属性文件中将不会找到log属性<a href="http://note.youdao.com/">。</a></p>
+<p>日志属性独立于实际的日志记录基础结构。 因此，特定配置key（如Logback的logback.configurationFile）不受Spring Boot管理。</p>
+</blockquote>
+<h3 id="264"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#264-日志级别"></a>26.4 日志级别</h3>
+<p>所有支持的日志记录系统都可以在Spring Environment 中设置log级别（例如在application.properties中），使用‘logging.level.*=LEVEL’，其中'LEVEL'是TRACE，DEBUG，INFO，WARN，ERROR，FATAL, OFF之一。 可以使用logging.level.root配置根记录器。 示例application.properties：</p>
+<pre><code>logging.level.root=WARN
+logging.level.org.springframework.web=DEBUG
+logging.level.org.hibernate=ERROR
+</code></pre>
+
+<blockquote>
+<p>默认情况下，Spring Boot会重新启动Thymeleaf INFO消息，以便它们以DEBUG级别进行记录。 这有助于降低标准日志输出中的噪音。 有关如何在自己的配置中应用重映射的详细信息，请参阅<a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot/src/main/java/org/springframework/boot/logging/logback/LevelRemappingAppender.java">LevelRemappingAppender</a>。</p>
+</blockquote>
+<h3 id="265"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#265-自定义日志配置"></a>26.5 自定义日志配置</h3>
+<p>可以通过在类路径中包含适当的库来激活各种日志系统，并通过在类路径的根目录中提供合适的配置文件，或在Spring Environment属性logging.config指定的位置进一步配置。</p>
+<p>您可以使用org.springframework.boot.logging.LoggingSystem系统属性强制Spring Boot使用特定的日志记录系统。该值应该是LoggingSystem实现的全名。 您还可以使用<code>none</code>值完全禁用Spring Boot的日志记录配置。</p>
+<blockquote>
+<p>由于在创建ApplicationContext之前初始化日志，因此无法在Spring @Configuration文件中控制@PropertySources的日志记录。 系统属性和常规的Spring Boot外部配置文件工作正常。</p>
+</blockquote>
+<p>根据您的日志记录系统，将会加载以下文件：</p>
+<table>
+<thead>
+<tr>
+<th>Logging System</th>
+<th>Customization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logback</td>
+<td>logback-spring.xml, logback-spring.groovy, logback.xml or logback.groovy</td>
+</tr>
+<tr>
+<td>Log4j2</td>
+<td>log4j2-spring.xml or log4j2.xml</td>
+</tr>
+<tr>
+<td>JDK (Java Util Logging)</td>
+<td>logging.properties</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果可能，我们建议您使用-spring变体进行日志记录配置（例如使用logback-spring.xml而不是logback.xml）。 如果使用标准配置位置，则Spring无法完全控制日志初始化。</p>
+<p>Java Util Logging存在已知的类加载问题，从“可执行jar”运行时会导致问题。 我们建议您尽可能避免。</p>
+</blockquote>
+<p>帮助定制一些其他属性从Spring环境转移到系统属性：</p>
+<table>
+<thead>
+<tr>
+<th>Spring Environment</th>
+<th>System Property</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logging.exception-conversion-word</td>
+<td>LOG_EXCEPTION_CONVERSION_WORD</td>
+<td>记录异常时使用的转换字。</td>
+</tr>
+<tr>
+<td>logging.file</td>
+<td>LOG_FILE</td>
+<td>如果定义了，则用于默认日志配置。</td>
+</tr>
+<tr>
+<td>logging.path</td>
+<td>LOG_PATH</td>
+<td>如果定义了，则用于默认日志配置。</td>
+</tr>
+<tr>
+<td>logging.pattern.console</td>
+<td>CONSOLE_LOG_PATTERN</td>
+<td>在控制台上使用的日志模式（stdout）。 （仅支持默认logback设置。）</td>
+</tr>
+<tr>
+<td>logging.pattern.file</td>
+<td>FILE_LOG_PATTERN</td>
+<td>在文件中使用的日志模式（如果LOG_FILE已启用）。 （仅支持默认logback设置。）</td>
+</tr>
+<tr>
+<td>logging.pattern.level</td>
+<td>LOG_LEVEL_PATTERN</td>
+<td>用于呈现日志级别的格式（默认％5p）。 （仅支持默认logback设置。）</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>PID</td>
+<td>当前进程ID（如果可能的话，当未被定义为OS环境变量时被发现）。</td>
+</tr>
+</tbody>
+</table>
+<p>支持的所有日志记录系统在分析其配置文件时可以查看系统属性。 有关示例，请参阅spring-boot.jar中的默认配置。</p>
+<blockquote>
+<p>如果要在logging属性中使用占位符，则应使<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-external-config-placeholders-in-properties">用Spring Boot的语法</a>，而不是底层框架的语法。 值得注意的是，如果您使用Logback，您应该使用：作为属性名称与其默认值之间的分隔符，而不是<code>:-</code>。</p>
+<p>您可以通过覆盖LOG_LEVEL_PATTERN（或Logback的log.pattern.level）来添加MDC和其他ad-hoc内容到日志行。 例如，如果使用logging.pattern.level = user：％X {user}％5p，则默认日志格式将包含“user”的MDC条目（如果存在）。</p>
+</blockquote>
+<pre><code>2015-09-30 12:30:04.031 user:juergen INFO 22174 --- [  nio-8080-exec-0] demo.Controller
+Handling authenticated request
+</code></pre>
+
+<h3 id="266-logback"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#266-logback扩展"></a>26.6 Logback扩展</h3>
+<p>Spring Boot包括大量的Logback扩展，可以帮助您进行高级配置。 您可以在logback-spring.xml配置文件中使用这些扩展。</p>
+<blockquote>
+<p>您不能在标准logback.xml配置文件中使用扩展名，因为其加载时间太早。 您需要使用logback-spring.xml或定义logging.config属性。</p>
+<p>扩展名不能与Logback的<a href="http://logback.qos.ch/manual/configuration.html#autoScan">配置扫描</a>一起使用。 如果您尝试这样做，对配置文件进行更改将导致类似于以下记录之一的错误：</p>
+</blockquote>
+<pre><code>ERROR in ch.qos.logback.core.joran.spi.Interpreter@4:71 - no applicable action for [springProperty], current ElementPath is [[configuration][springProperty]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@4:71 - no applicable action for [springProfile], current ElementPath is [[configuration][springProfile]]
+</code></pre>
+
+<h4 id="2661"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2661-指定配置文件配置"></a>26.6.1 指定配置文件配置</h4>
+<p><code>&amp;lt;springProfile&amp;gt;</code>标签允许您根据活动的Spring配置文件可选地包含或排除配置部分。 配置文件部分支持<code>&amp;lt;configuration&amp;gt;</code>元素在任何位置。 使用name属性指定哪个配置文件接受配置。 可以使用逗号分隔列表指定多个配置文件。</p>
+<pre><code>&lt;springProfile name=&quot;staging&quot;&gt;
+    &lt;!-- configuration to be enabled when the &quot;staging&quot; profile is active --&gt;
+&lt;/springProfile&gt;
+
+&lt;springProfile name=&quot;dev, staging&quot;&gt;
+    &lt;!-- configuration to be enabled when the &quot;dev&quot; or &quot;staging&quot; profiles are active --&gt;
+&lt;/springProfile&gt;
+
+&lt;springProfile name=&quot;!production&quot;&gt;
+    &lt;!-- configuration to be enabled when the &quot;production&quot; profile is not active --&gt;
+&lt;/springProfile&gt;
+</code></pre>
+
+<h4 id="2662"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2662-环境属性"></a>26.6.2 环境属性</h4>
+<p>&lt;springProperty&gt;标签允许您从Spring环境中显示属性，以便在Logback中使用。 如果您在logback中访问application.properties文件中的值，这将非常有用。 标签的工作方式与Logback标准的&lt;property&gt;标签类似，但不是指定直接值，而是指定属性的来源（来自Environment）。 如果需要将属性存储在本地范围以外的位置，则可以使用scope属性。 如果在环境中未设置属性的情况下需要备用值，则可以使用defaultValue属性。</p>
+<pre><code>&lt;springProperty scope=&quot;context&quot; name=&quot;fluentHost&quot; source=&quot;myapp.fluentd.host&quot; defaultValue=&quot;localhost&quot;/&gt;
+&lt;appender name=&quot;FLUENT&quot; class=&quot;ch.qos.logback.more.appenders.DataFluentAppender&quot;&gt;
+    &lt;remoteHost&gt;${fluentHost}&lt;/remoteHost&gt;
+    ...
+&lt;/appender&gt;
+</code></pre>
+
+<p>RelaxedPropertyResolver用于访问Environment属性。 如果以虚线表示法（my-property-name）指定源，则将尝试所有宽松的变体（myPropertyName，MY_PROPERTY_NAME等）。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/spring-boot-doc-zh/" target="_blank">apachecn/spring-boot-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'spring-boot-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../22/" title="25. 配置文件(Profiles)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                25. 配置文件(Profiles)
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../24/" title="27. 开发Web应用程序" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                27. 开发Web应用程序
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1171 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Spring Boot 1.5.2 中文文档">
+      
+      
+        <link rel="canonical" href="http://spring-boot.apachecn.org/16/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>20. 开发工具 - Spring Boot 1.5.2 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f272a2ddc7c0d8fe7ea0ebce50ed44d3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#2046" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Spring Boot 1.5.2 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                20. 开发工具
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Spring Boot 1.5.2 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Spring Boot 1.5.2 中文文档" class="md-nav__link">
+      Spring Boot 1.5.2 中文文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="Part I. Spring Boot 文档" class="md-nav__link">
+      Part I. Spring Boot 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="Part II. 入门指南" class="md-nav__link">
+      Part II. 入门指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="8. Spring Boot 介绍" class="md-nav__link">
+      8. Spring Boot 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="9. 系统要求" class="md-nav__link">
+      9. 系统要求
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="10. 安装 Spring Boot" class="md-nav__link">
+      10. 安装 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="11. 开发您的第一个Spring Boot应用程序" class="md-nav__link">
+      11. 开发您的第一个Spring Boot应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="12. 接下来应该读什么" class="md-nav__link">
+      12. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Part III. 使用 Spring Boot" class="md-nav__link">
+      Part III. 使用 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="13. 构建系统" class="md-nav__link">
+      13. 构建系统
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="14. 构建代码" class="md-nav__link">
+      14. 构建代码
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="15. 配置类" class="md-nav__link">
+      15. 配置类
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="16. 自动配置" class="md-nav__link">
+      16. 自动配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="17. Spring Beans 和 依赖注入" class="md-nav__link">
+      17. Spring Beans 和 依赖注入
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="18. 使用@SpringBootApplication注解" class="md-nav__link">
+      18. 使用@SpringBootApplication注解
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="19. 运行你的应用程序" class="md-nav__link">
+      19. 运行你的应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        20. 开发工具
+      </label>
+    
+    <a href="./" title="20. 开发工具" class="md-nav__link md-nav__link--active">
+      20. 开发工具
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#201" title="20.1 属性默认值" class="md-nav__link">
+    20.1 属性默认值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#202" title="20.2 自动重启" class="md-nav__link">
+    20.2 自动重启
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2021" title="20.2.1 排除资源" class="md-nav__link">
+    20.2.1 排除资源
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022" title="20.2.2 监视额外的路径" class="md-nav__link">
+    20.2.2 监视额外的路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2023" title="20.2.3 禁用重启" class="md-nav__link">
+    20.2.3 禁用重启
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2024" title="20.2.4 使用触发文件" class="md-nav__link">
+    20.2.4 使用触发文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2025" title="20.2.5 自定义重新启动类加载器" class="md-nav__link">
+    20.2.5 自定义重新启动类加载器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2026" title="20.2.6 已知的限制" class="md-nav__link">
+    20.2.6 已知的限制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#203-livereload" title="20.3 LiveReload" class="md-nav__link">
+    20.3 LiveReload
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#204" title="20.4 全局设置" class="md-nav__link">
+    20.4 全局设置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#205" title="20.5远程应用" class="md-nav__link">
+    20.5远程应用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2051" title="20.5.1 运行远程客户端应用程序" class="md-nav__link">
+    20.5.1 运行远程客户端应用程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2052" title="20.5.2 远程更新" class="md-nav__link">
+    20.5.2 远程更新
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2053" title="20.5.3 远程调试隧道" class="md-nav__link">
+    20.5.3 远程调试隧道
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="21. 包装您的应用程序到生产环境" class="md-nav__link">
+      21. 包装您的应用程序到生产环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="22. 接下来应该读什么" class="md-nav__link">
+      22. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="Part IV. Spring Boot 功能" class="md-nav__link">
+      Part IV. Spring Boot 功能
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="23. SpringApplication" class="md-nav__link">
+      23. SpringApplication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../21/" title="24. 外部配置" class="md-nav__link">
+      24. 外部配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="25. 配置文件(Profiles)" class="md-nav__link">
+      25. 配置文件(Profiles)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../23/" title="26. 日志" class="md-nav__link">
+      26. 日志
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../24/" title="27. 开发Web应用程序" class="md-nav__link">
+      27. 开发Web应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../25/" title="28. Security" class="md-nav__link">
+      28. Security
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="29. 使用SQL数据库" class="md-nav__link">
+      29. 使用SQL数据库
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#201" title="20.1 属性默认值" class="md-nav__link">
+    20.1 属性默认值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#202" title="20.2 自动重启" class="md-nav__link">
+    20.2 自动重启
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2021" title="20.2.1 排除资源" class="md-nav__link">
+    20.2.1 排除资源
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022" title="20.2.2 监视额外的路径" class="md-nav__link">
+    20.2.2 监视额外的路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2023" title="20.2.3 禁用重启" class="md-nav__link">
+    20.2.3 禁用重启
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2024" title="20.2.4 使用触发文件" class="md-nav__link">
+    20.2.4 使用触发文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2025" title="20.2.5 自定义重新启动类加载器" class="md-nav__link">
+    20.2.5 自定义重新启动类加载器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2026" title="20.2.6 已知的限制" class="md-nav__link">
+    20.2.6 已知的限制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#203-livereload" title="20.3 LiveReload" class="md-nav__link">
+    20.3 LiveReload
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#204" title="20.4 全局设置" class="md-nav__link">
+    20.4 全局设置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#205" title="20.5远程应用" class="md-nav__link">
+    20.5远程应用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2051" title="20.5.1 运行远程客户端应用程序" class="md-nav__link">
+    20.5.1 运行远程客户端应用程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2052" title="20.5.2 远程更新" class="md-nav__link">
+    20.5.2 远程更新
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2053" title="20.5.3 远程调试隧道" class="md-nav__link">
+    20.5.3 远程调试隧道
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/spring-boot-doc-zh/edit/master/docs/16.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="2046">20. 开发工具</h1>
+<p>Spring Boot包括一组额外的工具，可以使应用程序开发体验更加愉快。 spring-boot-devtools模块可以包含在任何项目中，以提供额外的<a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/development-time">开发时</a>功能。 要包含devtools支持，只需将模块依赖关系添加到您的构建中：</p>
+<p>Maven：</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+
+<p>Gradle：</p>
+<pre><code>dependencies {
+    compile(&quot;org.springframework.boot:spring-boot-devtools&quot;)
+}
+</code></pre>
+
+<blockquote>
+<p>当运行完全打包的应用程序时，开发人员工具将自动禁用。 如果您的应用程序是使用java -jar启动的，或者是使用特殊的类加载器启动，那么它将会被认为是“生产环境的应用程序”。 将开发工具依赖关系标记为可选(optional)是一种最佳做法，可以防止使用项目将devtools传递性地应用于其他模块。 Gradle不支持开箱即用的可选依赖项，因此您可能希望在此期间查看<a href="https://github.com/spring-projects/gradle-plugins/tree/master/propdeps-plugin">propdeps-plugin</a>。</p>
+<p>重新打包的jar包默认情况下不包含devtools。 如果要使用某些<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-devtools-remote">远程devtools功能</a>，您需要禁用excludeDevtools 构建下的属性以包含devtools。 该属性支持Maven和Gradle插件。</p>
+</blockquote>
+<h3 id="201"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#201-属性默认值"></a>20.1 属性默认值</h3>
+<p>Spring Boots支持的几个库使用缓存来提高性能。 例如，<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-template-engines">模板引擎</a>将缓存编译的模板，以避免重复解析模板文件。 此外，Spring MVC可以在返回静态资源时向响应中添加HTTP缓存头。</p>
+<p>虽然缓存在生产中非常有益，但它在开发过程中可能会产生反效果，从而阻止您看到刚刚在应用程序中进行的更改。 因此，spring-boot-devtools将默认禁用这些缓存选项。</p>
+<p>缓存选项通常由您的application.properties文件中的设置配置。 例如，Thymeleaf提供了spring.thymeleaf.cache属性。 spring-boot-devtools模块不需要手动设置这些属性，而是自动应用更加合理的开发时(development-time)配置。</p>
+<blockquote>
+<p>有关应用的属性的完整列表，请参阅 <a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-devtools/src/main/java/org/springframework/boot/devtools/env/DevToolsPropertyDefaultsPostProcessor.java">DevToolsPropertyDefaultsPostProcessor</a>。</p>
+</blockquote>
+<h3 id="202"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#202-自动重启"></a>20.2 自动重启</h3>
+<p>使用spring-boot-devtools的应用程序将在类路径上的文件发生更改时自动重新启动。 这在IDE中开发时可能是一个有用的功能，因为它为代码更改提供了非常快的反馈循环。 默认情况下，将监视指向文件夹的类路径上的任何条目。 请注意，某些资源（如静态资源和视图模板）不需要重新启动应用程序。</p>
+<p>触发重启</p>
+<p>当DevTools监视类路径资源时，触发重新启动的唯一方法是更新类路径中的文件时。 导致类路径更新的方式取决于您正在使用的IDE。 在Eclipse中，保存修改的文件将导致类路径被更新并触发重新启动。 在IntelliJ IDEA中，构建项目（Build→Make Project）将具有相同的效果。</p>
+<blockquote>
+<p>只要 forking 被启用，您也可以通过支持的构建插件（即Maven和Gradle）启动应用程序，因为DevTools需要一个单独的应用程序类加载器才能正常运行。Gradle和Maven默认情况下在类路径上检DevTools。</p>
+<p>自动重启当与LiveReload一起使用时工作非常好。 详见<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-devtools-livereload">下文</a>。 如果您使用JRebel，自动重启将被禁用，有利于动态类重新加载。 其他devtools功能仍然可以使用（如LiveReload和属性覆盖）。</p>
+<p>DevTools依赖于应用程序上下文的关闭钩子，以在重新启动期间关闭它。 如果禁用了关闭挂钩（SpringApplication.setRegisterShutdownHook（false）），DevTools将无法正常工作。</p>
+<p>当判断类路径中的项目是否会在更改时触发重新启动时，DevTools会自动忽略名为spring-boot，spring-boot-devtools，spring-boot-autoconfigure，spring-boot-actuator和spring-boot-start的项目。</p>
+</blockquote>
+<p>重新启动(Restart) vs 重新加载(Reload)</p>
+<p>Spring Boot提供的重新启动技术使用两个类加载器。 不会改的类（例如，来自第三方的jar）被加载到基类加载器中。 您正在开发的类被加载到重新启动(restart)类加载器中。 当应用程序重新启动时，重新启动类加载器将被丢弃，并创建一个新的类加载器。 这种方法意味着应用程序重新启动通常比“冷启动”快得多，因为基类加载器已经可以使用。</p>
+<p>如果发现重新启动对应用程序不够快，或遇到类加载问题，您可以考虑来自ZeroTurnaround的JRebel等重新加载技术。 这些工作通过在加载类时重写(rewriting)类，使其更适合重新加载。 Spring Loaded提供了另一个选项，但是它在很多框架上不支持，并且不支持商用。</p>
+<h4 id="2021"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2021-排除资源"></a>20.2.1 排除资源</h4>
+<p>在类路径下，某些资源在更改时不一定需要触发重新启动。 例如，Thymeleaf模板可以直接编辑不需重启。 默认情况下，有一些排除项，更改 /META-INF/maven，/META-INF/resources，/resources，/static，/public或/templates中的资源不会触发重新启动，但会触发<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-devtools-livereload">实时重新加载</a>。 如果要自定义这些排除项，可以使用spring.devtools.restart.exclude属性。 例如，要仅排除 /static和 /public，您可以设置：</p>
+<pre><code>spring.devtools.restart.exclude=static/**,public/**
+</code></pre>
+
+<blockquote>
+<p>如果要保留这些默认值并添加其他排除项，请改用spring.devtools.restart.additional-exclude属性。</p>
+</blockquote>
+<h4 id="2022"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2022-监视额外的路径"></a>20.2.2 监视额外的路径</h4>
+<p>有时当您对不在类路径中的文件进行更改时，需要重新启动或重新加载应用程序。为此，请使用spring.devtools.restart.additional-paths属性来配置其他路径以监视更改。 您可以使用<a href="described above">上述</a>的spring.devtools.restart.exclude属性来控制附加路径下的更改是否会触发完全重新启动或只是<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-devtools-livereload">实时重新加载</a>。</p>
+<h4 id="2023"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2023-禁用重启"></a>20.2.3 禁用重启</h4>
+<p>如果不想使用重新启动功能，可以使用spring.devtools.restart.enabled属性来禁用它。 在大多数情况下，您可以在application.properties中设置此项（这仍将初始化重新启动类加载器，但不会监视文件更改）。</p>
+<p>例如，如果您需要完全禁用重新启动支持，因为它在一些特定库中不能正常运行，则需要在调用SpringApplication.run（...）之前设置System属性。 例如：</p>
+<pre><code>public static void main(String[] args) {
+    System.setProperty(&quot;spring.devtools.restart.enabled&quot;, &quot;false&quot;);
+    SpringApplication.run(MyApp.class, args);
+}
+</code></pre>
+
+<h4 id="2024"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2024-使用触发文件"></a>20.2.4 使用触发文件</h4>
+<p>如果您使用IDE工具编写代码，更改文件，则您可能希望仅在特定时间触发重新启动。 为此，您可以使用“触发文件”，这是一个特殊文件，当您要实际触发重新启动检查时，必须修改它。 更改文件只会触发检查，只有在Devtools检测到它必须执行某些操作时才会重新启动。 触发文件可以手动更新，也可以通过IDE插件更新。</p>
+<p>要使用触发器文件，请使用spring.devtools.restart.trigger-file属性。</p>
+<blockquote>
+<p>您可能希望将spring.devtools.restart.trigger-file设置为<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-devtools-globalsettings">全局设置</a>，以使所有项目的行为方式相同。</p>
+</blockquote>
+<h4 id="2025"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2025-自定义重新启动类加载器"></a>20.2.5 自定义重新启动类加载器</h4>
+<p>如上面的 <a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-spring-boot-restart-vs-reload">Restart vs Reload</a> 部分所述，重新启动功能是通过使用两个类加载器实现的。 对于大多数应用程序，此方法运行良好，但有时可能会导致类加载问题。</p>
+<p>默认情况下，IDE中的任何打开的项目将使用“重新启动”类加载器加载，任何常规.jar文件将使用“base”类加载器加载。 如果您在多模块项目上工作，而不是每个模块都导入到IDE中，则可能需要自定义事件。 为此，您可以创建一个META-INF / spring-devtools.properties文件。</p>
+<p>spring-devtools.properties文件可以包含restart.exclude 和 restart.include.prefixed属性。 include元素是应该被拉入“重新启动(restart)”类加载器的项目，排除元素是应该向下推入“基本(base)”类加载器的项目。 属性的值是将应用于类路径的正则表达式模式。</p>
+<p>例如：</p>
+<pre><code>restart.exclude.companycommonlibs=/mycorp-common-[\\w-]+\.jar
+restart.include.projectcommon=/mycorp-myproj-[\\w-]+\.jar
+</code></pre>
+
+<blockquote>
+<p>所有属性键必须是唯一的。 只要一个属性从restart.include. 或restart.exclude. 开始，将被考虑。</p>
+<p>将加载类路径中的所有META-INF/spring-devtools.properties。 您可以在项目中打包文件，或者在项目所使用的库中打包文件。</p>
+</blockquote>
+<h4 id="2026"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2026-已知的限制"></a>20.2.6 已知的限制</h4>
+<p>重新启动功能对于使用标准ObjectInputStream反序列化的对象无效。 如果需要反序列化数据，可能需要使用Spring的ConfigurableObjectInputStream与Thread.currentThread()。getContextClassLoader()组合使用。</p>
+<p>不幸的是，几个第三方库在不考虑上下文类加载器的情况下反序列化。 如果您发现这样的问题，您需要向原始作者请求修复。</p>
+<h3 id="203-livereload"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#203-livereload"></a>20.3 LiveReload</h3>
+<p>spring-boot-devtools模块包括一个嵌入式LiveReload服务器，可以在资源更改时用于触发浏览器刷新。 LiveReload浏览器扩展程序可以从 <a href="http://livereload.com/">http://livereload.com</a>免费获取Chrome，Firefox和Safari的插件。</p>
+<p>如果您不想在应用程序运行时启动LiveReload服务器，则可以将spring.devtools.livereload.enabled属性设置为false。</p>
+<blockquote>
+<p>一次只能运行一个LiveReload服务器。 开始应用程序之前，请确保没有其他LiveReload服务器正在运行。 如果从IDE启动多个应用程序，则只有第一个应用程序将支持LiveReload。</p>
+</blockquote>
+<h3 id="204"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#204-全局设置"></a>20.4 全局设置</h3>
+<p>您可以通过向 $HOME 文件夹添加名为.spring-boot-devtools.properties的文件来配置全局devtools设置（请注意文件名以“.”开头）。 添加到此文件的任何属性将适用于您的计算机上使用devtools的所有Spring Boot应用程序。 例如，要配置重新启动以始终使用触发器文件，您可以添加以下内容：</p>
+<p>~/.spring-boot-devtools.properties.</p>
+<pre><code>spring.devtools.reload.trigger-file=.reloadtrigger
+</code></pre>
+
+<h3 id="205"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#205远程应用"></a>20.5远程应用</h3>
+<p>Spring Boot开发工具不仅限于本地开发。 远程运行应用程序时也可以使用多种功能。 远程支持是可选择的，要使其能够确保重新打包的存档中包含devtools：</p>
+<pre><code>&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;excludeDevtools&gt;false&lt;/excludeDevtools&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p>那么你需要设置一个spring.devtools.remote.secret属性，例如：</p>
+<pre><code>spring.devtools.remote.secret=mysecret
+</code></pre>
+
+<blockquote>
+<p>在远程应用程序上启用spring-boot-devtools是一种安全隐患。 您不应该在生产部署中启用该支持。</p>
+</blockquote>
+<p>远程devtools支持分为两部分： 有一个接受连接的服务器端和您在IDE中运行的客户端应用程序。 当spring.devtools.remote.secret属性设置时，服务器组件将自动启用。 客户端组件必须手动启动。</p>
+<h4 id="2051"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2051-运行远程客户端应用程序"></a>20.5.1 运行远程客户端应用程序</h4>
+<p>远程客户端应用程序旨在从IDE中运行。 您需要使用与要连接的远程项目相同的类路径运行org.springframework.boot.devtools.RemoteSpringApplication。 传递给应用程序的必选参数应该是您要连接到的远程URL。</p>
+<p>例如，如果您使用Eclipse或STS，并且有一个名为my-app的项目已部署到Cloud Foundry，则可以执行以下操作：</p>
+<ul>
+<li>从Run 菜单中选择Run Configurations…。</li>
+<li>创建一个新的Java Application “launch configuration”。</li>
+<li>浏览my-app项目。</li>
+<li>使用org.springframework.boot.devtools.RemoteSpringApplication作为主类。</li>
+<li>将</li>
+</ul>
+<p>运行的远程客户端将如下所示：</p>
+<pre><code>.   ____          _                                              __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _          ___               _      \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` |        | _ \___ _ __  ___| |_ ___ \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| []::::::[]   / -_) '  \/ _ \  _/ -_) ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, |        |_|_\___|_|_|_\___/\__\___|/ / / /
+ =========|_|==============|___/===================================/_/_/_/
+ :: Spring Boot Remote :: 1.5.2.RELEASE
+
+2015-06-10 18:25:06.632  INFO 14938 --- [           main] o.s.b.devtools.RemoteSpringApplication   : Starting RemoteSpringApplication on pwmbp with PID 14938 (/Users/pwebb/projects/spring-boot/code/spring-boot-devtools/target/classes started by pwebb in /Users/pwebb/projects/spring-boot/code/spring-boot-samples/spring-boot-sample-devtools)
+2015-06-10 18:25:06.671  INFO 14938 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2a17b7b6: startup date [Wed Jun 10 18:25:06 PDT 2015]; root of context hierarchy
+2015-06-10 18:25:07.043  WARN 14938 --- [           main] o.s.b.d.r.c.RemoteClientConfiguration    : The connection to http://localhost:8080 is insecure. You should use a URL starting with 'https://'.
+2015-06-10 18:25:07.074  INFO 14938 --- [           main] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2015-06-10 18:25:07.130  INFO 14938 --- [           main] o.s.b.devtools.RemoteSpringApplication   : Started RemoteSpringApplication in 0.74 seconds (JVM running for 1.105)
+</code></pre>
+
+<blockquote>
+<p>由于远程客户端正在使用与实际应用程序相同的类路径，因此可以直接读取应用程序属性。 这是spring.devtools.remote.secret属性如何读取并传递到服务器进行身份验证。</p>
+<p>建议使用https//作为连接协议，以便流量被加密，防止密码被拦截。</p>
+<p>如果需要使用代理访问远程应用程序，请配置spring.devtools.remote.proxy.host和spring.devtools.remote.proxy.port属性。</p>
+</blockquote>
+<h4 id="2052"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2052-远程更新"></a>20.5.2 远程更新</h4>
+<p>远程客户端将以与本地相同的方式监视应用程序类路径的更改。 任何更新的资源将被推送到远程应用程序，并且（如果需要的话）触发重新启动。 如果您正在迭代使用您当地没有的云服务的功能，这可能会非常有用。 通常，远程更新和重新启动比完全重建和部署周期要快得多。</p>
+<blockquote>
+<p>仅在远程客户端运行时才监视文件。 如果在启动远程客户端之前更改文件，则不会将其推送到远程服务器。</p>
+</blockquote>
+<h4 id="2053"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#2053-远程调试隧道"></a>20.5.3 远程调试隧道</h4>
+<p>在远程应用程序诊断问题时，Java远程调试非常有用。 不幸的是，当您的应用程序部署在数据中心之外时，并不总是能够进行远程调试。 如果您正在使用基于容器的技术（如Docker），远程调试也可能难以设置。</p>
+<p>为了帮助解决这些限制，devtools支持基于HTTP隧道的传输远程调试传输。 远程客户端在端口8000上提供本地服务器，您可以连接远程调试器。 建立连接后，通过HTTP将调试数据发送到远程应用程序。 如果要使用其他端口，可以使用spring.devtools.remote.debug.local-port属性更改。</p>
+<p>您需要确保远程应用程序启用远程调试启用。 通常可以通过配置JAVA_OPTS来实现。 例如，使用Cloud Foundry，您可以将以下内容添加到manifest.yml中：</p>
+<pre><code>---
+    env:
+        JAVA_OPTS: &quot;-Xdebug -Xrunjdwp:server=y,transport=dt_socket,suspend=n&quot;
+</code></pre>
+
+<blockquote>
+<p>请注意，您不需要将 address=NNNN 选项传递给-Xrunjdwp。 如果省略Java将随机选择一个的空闲端口。</p>
+<p>通过网络调试远程服务可能很慢，您可能需要在IDE中增加超时时间。 例如，在Eclipse中，您可以从Preferences...中选择Java→Debug ，并将Debugger timeout (ms)更改为更合适的值（大多数情况下，60000可以正常工作）。</p>
+<p>当使用IntelliJ IDEA的远程调试隧道时，必须将所有调试断点配置为挂起线程而不是挂起VM。 默认情况下，IntelliJ IDEA中的断点会挂起整个VM，而不是仅挂起触发断点的线程。 这会导致挂起管理远程调试通道的线程等不必要的副作用，导致调试会话冻结。 当使用IntelliJ IDEA的远程调试隧道时，应将所有断点配置为挂起线程而不是VM。 有关详细信息，请参阅<a href="https://youtrack.jetbrains.com/issue/IDEA-165769">IDEA-165769</a>。</p>
+</blockquote>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/spring-boot-doc-zh/" target="_blank">apachecn/spring-boot-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'spring-boot-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../15/" title="19. 运行你的应用程序" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                19. 运行你的应用程序
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../17/" title="21. 包装您的应用程序到生产环境" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                21. 包装您的应用程序到生产环境
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

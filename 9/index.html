@@ -1,0 +1,1398 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Spring Boot 1.5.2 中文文档">
+      
+      
+        <link rel="canonical" href="http://spring-boot.apachecn.org/9/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>13. 构建系统 - Spring Boot 1.5.2 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f272a2ddc7c0d8fe7ea0ebce50ed44d3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#1346" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Spring Boot 1.5.2 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                13. 构建系统
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://spring-boot.apachecn.org" title="Spring Boot 1.5.2 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Spring Boot 1.5.2 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/spring-boot-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      spring-boot-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Spring Boot 1.5.2 中文文档" class="md-nav__link">
+      Spring Boot 1.5.2 中文文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="Part I. Spring Boot 文档" class="md-nav__link">
+      Part I. Spring Boot 文档
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="Part II. 入门指南" class="md-nav__link">
+      Part II. 入门指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="8. Spring Boot 介绍" class="md-nav__link">
+      8. Spring Boot 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="9. 系统要求" class="md-nav__link">
+      9. 系统要求
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="10. 安装 Spring Boot" class="md-nav__link">
+      10. 安装 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="11. 开发您的第一个Spring Boot应用程序" class="md-nav__link">
+      11. 开发您的第一个Spring Boot应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="12. 接下来应该读什么" class="md-nav__link">
+      12. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Part III. 使用 Spring Boot" class="md-nav__link">
+      Part III. 使用 Spring Boot
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        13. 构建系统
+      </label>
+    
+    <a href="./" title="13. 构建系统" class="md-nav__link md-nav__link--active">
+      13. 构建系统
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131" title="13.1 依赖管理" class="md-nav__link">
+    13.1 依赖管理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-maven" title="13.2 Maven" class="md-nav__link">
+    13.2 Maven
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321-parent" title="13.2.1 继承启动器parent" class="md-nav__link">
+    13.2.1 继承启动器parent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322-pom-spring-boot" title="13.2.2 使用没有父POM的 Spring Boot" class="md-nav__link">
+    13.2.2 使用没有父POM的 Spring Boot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1323-java" title="13.2.3 更改Java版本" class="md-nav__link">
+    13.2.3 更改Java版本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1324-spring-boot-maven" title="13.2.4 使用Spring Boot Maven插件" class="md-nav__link">
+    13.2.4 使用Spring Boot Maven插件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-gradle" title="13.3 Gradle" class="md-nav__link">
+    13.3 Gradle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-ant" title="13.4 Ant" class="md-nav__link">
+    13.4 Ant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135" title="13.5 启动器" class="md-nav__link">
+    13.5 启动器
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="14. 构建代码" class="md-nav__link">
+      14. 构建代码
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="15. 配置类" class="md-nav__link">
+      15. 配置类
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="16. 自动配置" class="md-nav__link">
+      16. 自动配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="17. Spring Beans 和 依赖注入" class="md-nav__link">
+      17. Spring Beans 和 依赖注入
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="18. 使用@SpringBootApplication注解" class="md-nav__link">
+      18. 使用@SpringBootApplication注解
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="19. 运行你的应用程序" class="md-nav__link">
+      19. 运行你的应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../16/" title="20. 开发工具" class="md-nav__link">
+      20. 开发工具
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="21. 包装您的应用程序到生产环境" class="md-nav__link">
+      21. 包装您的应用程序到生产环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="22. 接下来应该读什么" class="md-nav__link">
+      22. 接下来应该读什么
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="Part IV. Spring Boot 功能" class="md-nav__link">
+      Part IV. Spring Boot 功能
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="23. SpringApplication" class="md-nav__link">
+      23. SpringApplication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../21/" title="24. 外部配置" class="md-nav__link">
+      24. 外部配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="25. 配置文件(Profiles)" class="md-nav__link">
+      25. 配置文件(Profiles)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../23/" title="26. 日志" class="md-nav__link">
+      26. 日志
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../24/" title="27. 开发Web应用程序" class="md-nav__link">
+      27. 开发Web应用程序
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../25/" title="28. Security" class="md-nav__link">
+      28. Security
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="29. 使用SQL数据库" class="md-nav__link">
+      29. 使用SQL数据库
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131" title="13.1 依赖管理" class="md-nav__link">
+    13.1 依赖管理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-maven" title="13.2 Maven" class="md-nav__link">
+    13.2 Maven
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321-parent" title="13.2.1 继承启动器parent" class="md-nav__link">
+    13.2.1 继承启动器parent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322-pom-spring-boot" title="13.2.2 使用没有父POM的 Spring Boot" class="md-nav__link">
+    13.2.2 使用没有父POM的 Spring Boot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1323-java" title="13.2.3 更改Java版本" class="md-nav__link">
+    13.2.3 更改Java版本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1324-spring-boot-maven" title="13.2.4 使用Spring Boot Maven插件" class="md-nav__link">
+    13.2.4 使用Spring Boot Maven插件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-gradle" title="13.3 Gradle" class="md-nav__link">
+    13.3 Gradle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-ant" title="13.4 Ant" class="md-nav__link">
+    13.4 Ant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135" title="13.5 启动器" class="md-nav__link">
+    13.5 启动器
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/spring-boot-doc-zh/edit/master/docs/9.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="1346">13. 构建系统</h1>
+<p>强烈建议您选择一个支持<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-dependency-management">依赖管理</a>并可以使用“Maven Central”存储库的构建系统。 我们建议您选择Maven或Gradle。 Spring Boot 可以与其他构建系统（例如 Ant ）配合使用，但是它们不会得到很好的支持。</p>
+<h3 id="131">13.1 依赖管理</h3>
+<p>每个版本的Spring Boot提供了一个它所支持的依赖关系列表。 实际上，您不需要为构建配置文件中的这些依赖关系提供版本，因为Spring Boot会为您进行管理这些依赖的版本。 当您升级Spring Boot本身时，这些依赖关系也将以一致的进行升级。</p>
+<blockquote>
+<p>如果您觉得有必要，您仍然可以指定一个版本并覆盖Spring Boot建议的版本。</p>
+</blockquote>
+<p>管理的列表中包含可以使用Spring Boot的所有Spring模块以及第三方库的精简列表。 该列表可作为标准的<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-maven-without-a-parent">物料(Materials)清单（spring-boot-dependencies）</a>使用，并且还提供了对 <a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-maven-parent-pom">Maven</a> 和 <a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#build-tool-plugins-gradle-dependency-management">Gradle</a> 的额外支持。</p>
+<blockquote>
+<p>Spring Boot的每个版本与Spring Framework的基本版本相关联，因此我们强烈建议您不要自己指定其版本。</p>
+</blockquote>
+<h3 id="132-maven"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#132-maven"></a>13.2 Maven</h3>
+<p>Maven用户可以从 spring-boot-starter-parent-parent 项目中继承，以获得合理的默认值。 父项目提供以下功能：</p>
+<ul>
+<li>Java 1.6作为默认编译器级别。</li>
+<li>源代码UTF-8编码。</li>
+<li><a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#using-boot-dependency-management">依赖关系管理</a>，允许您省略常见依赖的&lt;version&gt;标签，其默认版本继承自spring-boot-dependencies POM。</li>
+<li>更合理的<a href="https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html">资源过滤</a>。</li>
+<li>更合理的插件配置（<a href="http://www.mojohaus.org/exec-maven-plugin/">exec plugin</a>，<a href="https://maven.apache.org/surefire/maven-surefire-plugin/">surefire</a>，<a href="https://github.com/ktoso/maven-git-commit-id-plugin">Git commit ID</a>，<a href="https://maven.apache.org/plugins/maven-shade-plugin/">shade</a>）。</li>
+<li>针对application.properties和application.yml的更合理的资源过滤，包括特定的文件（例如application-foo.properties和application-foo.yml）</li>
+<li>最后一点：由于默认的配置文件接受Spring样式占位符（${...}），Maven过滤更改为使用 @..@ 占位符（您可以使用Maven属性resource.delimiter覆盖它）。</li>
+</ul>
+<h4 id="1321-parent"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#1321-继承启动器parent"></a>13.2.1 继承启动器parent</h4>
+<p>要将项目配置为继承spring-boot-starter-parent，只需设置&lt;parent&gt;标签如下：</p>
+<pre><code>&lt;!-- Inherit defaults from Spring Boot --&gt;
+&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.5.2.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+</code></pre>
+
+<blockquote>
+<p>您只需要在此依赖项上指定Spring Boot版本号。 如果您导入其他起始器，则可以放心地省略他们的版本号。</p>
+</blockquote>
+<p>通过该设置，您还可以通过覆盖自己的项目中的属性来覆盖单个依赖。 例如，要升级到另一个 Spring Data 版本序列，您需要将以下内容添加到您的pom.xml中。</p>
+<pre><code>&lt;properties&gt;
+    &lt;spring-data-releasetrain.version&gt;Fowler-SR2&lt;/spring-data-releasetrain.version&gt;
+&lt;/properties&gt;
+</code></pre>
+
+<blockquote>
+<p>检查 <a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-dependencies/pom.xml">spring-boot-dependencies pom</a> 以获取支持的属性列表。</p>
+</blockquote>
+<h4 id="1322-pom-spring-boot"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#1322-使用没有父pom的-spring-boot"></a>13.2.2 使用没有父POM的 Spring Boot</h4>
+<p>不是每个人都喜欢从spring-boot-starter-parent POM继承。 您公司可能有自己标准的父母，或者您可能只希望明确声明所有的Maven配置。</p>
+<p>如果您不想使用spring-boot-starter-parent，则仍然可以通过使用scope=import依赖来保持依赖管理（但不能进行插件管理）的好处：</p>
+<pre><code>&lt;dependencyManagement&gt;
+     &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;!-- Import dependency management from Spring Boot --&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+            &lt;version&gt;1.5.2.RELEASE&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre>
+
+<p>该设置不允许您使用如13.2.1 所述的属性来覆盖单个依赖关系。 要实现相同的结果，您需要在spring-boot-dependencies条目之前在项目的dependencyManagement中添加一个条目。 例如，要升级到另一个Spring Data发行版本，您需要将以下内容添加到您的pom.xml中。</p>
+<pre><code>&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;!-- Override Spring Data release train provided by Spring Boot --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-data-releasetrain&lt;/artifactId&gt;
+            &lt;version&gt;Fowler-SR2&lt;/version&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+            &lt;version&gt;1.5.2.RELEASE&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre>
+
+<blockquote>
+<p>在上面的例子中，我们指定了一个BOM，但是任何依赖关系类型都可以被这样覆盖。</p>
+</blockquote>
+<h4 id="1323-java">13.2.3 更改Java版本</h4>
+<p>spring-boot-starter-parent选择相当保守的Java兼容性版本。 如果要遵循我们的建议并使用更高版本的Java版本，可以添加java.version属性：</p>
+<pre><code>&lt;properties&gt;
+    &lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
+</code></pre>
+
+<h4 id="1324-spring-boot-maven"><a href="file:///C:/Users/geekidentity/AppData/Local/Youdao/YNote/markdown/index.html#1324-使用spring-boot-maven插件"></a>13.2.4 使用Spring Boot Maven插件</h4>
+<p>Spring Boot包括一个Maven插件，可以将项目打包成可执行jar。 如果要使用它，请将插件添加到&lt;plugins&gt;部分：</p>
+<pre><code>&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<blockquote>
+<p>如果您使用Spring Boot启动器 parent pom，则只需要添加这个插件，除非您要更改parent中定义的设置，否则不需要进行配置。</p>
+</blockquote>
+<h3 id="133-gradle">13.3 Gradle</h3>
+<p>Gradle用户可以直接在其依赖关系部分导入“启动器”。 不像Maven，没有“超级父”导入来共享一些配置。</p>
+<pre><code>repositories {
+    jcenter()
+}
+
+dependencies {
+    compile(&quot;org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE&quot;)
+}
+</code></pre>
+
+<p>spring-boot-gradle-plugin也是可用的，它提供了从源代码创建可执行jar并运行项目的任务。 它还提供依赖关系管理，除其他功能外，还允许您省略由Spring Boot管理的任何依赖关系的版本号：</p>
+<pre><code>plugins {
+    id 'org.springframework.boot' version '1.5.2.RELEASE'
+    id 'java'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile(&quot;org.springframework.boot:spring-boot-starter-web&quot;)
+    testCompile(&quot;org.springframework.boot:spring-boot-starter-test&quot;)
+}
+</code></pre>
+
+<h3 id="134-ant">13.4 Ant</h3>
+<p>可以使用Apache Ant + Ivy构建Spring Boot项目。 spring-boot-antlib“AntLib”模块也可用于帮助Ant创建可执行文件。</p>
+<p>要声明依赖关系，典型的ivy.xml文件将如下所示：</p>
+<pre><code>&lt;ivy-module version=&quot;2.0&quot;&gt;
+    &lt;info organisation=&quot;org.springframework.boot&quot; module=&quot;spring-boot-sample-ant&quot; /&gt;
+    &lt;configurations&gt;
+        &lt;conf name=&quot;compile&quot; description=&quot;everything needed to compile this module&quot; /&gt;
+        &lt;conf name=&quot;runtime&quot; extends=&quot;compile&quot; description=&quot;everything needed to run this module&quot; /&gt;
+    &lt;/configurations&gt;
+    &lt;dependencies&gt;
+        &lt;dependency org=&quot;org.springframework.boot&quot; name=&quot;spring-boot-starter&quot; rev=&quot;${spring-boot.version}&quot; conf=&quot;compile&quot; /&gt;
+    &lt;/dependencies&gt;
+&lt;/ivy-module&gt;
+</code></pre>
+
+<p>典型的build.xml将如下所示：</p>
+<pre><code>&lt;project xmlns:ivy=&quot;antlib:org.apache.ivy.ant&quot; xmlns:spring-boot=&quot;antlib:org.springframework.boot.ant&quot; name=&quot;myapp&quot; default=&quot;build&quot;&gt;
+
+    &lt;property name=&quot;spring-boot.version&quot; value=&quot;1.3.0.BUILD-SNAPSHOT&quot; /&gt;
+
+    &lt;target name=&quot;resolve&quot; description=&quot;--&gt; retrieve dependencies with ivy&quot;&gt;
+        &lt;ivy:retrieve pattern=&quot;lib/[conf]/[artifact]-[type]-[revision].[ext]&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;classpaths&quot; depends=&quot;resolve&quot;&gt;
+        &lt;path id=&quot;compile.classpath&quot;&gt;
+            &lt;fileset dir=&quot;lib/compile&quot; includes=&quot;*.jar&quot; /&gt;
+        &lt;/path&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;init&quot; depends=&quot;classpaths&quot;&gt;
+        &lt;mkdir dir=&quot;build/classes&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;compile&quot; depends=&quot;init&quot; description=&quot;compile&quot;&gt;
+        &lt;javac srcdir=&quot;src/main/java&quot; destdir=&quot;build/classes&quot; classpathref=&quot;compile.classpath&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;build&quot; depends=&quot;compile&quot;&gt;
+        &lt;spring-boot:exejar destfile=&quot;build/myapp.jar&quot; classes=&quot;build/classes&quot;&gt;
+            &lt;spring-boot:lib&gt;
+                &lt;fileset dir=&quot;lib/runtime&quot; /&gt;
+            &lt;/spring-boot:lib&gt;
+        &lt;/spring-boot:exejar&gt;
+    &lt;/target&gt;
+&lt;/project&gt;
+</code></pre>
+
+<blockquote>
+<p>请参见<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#howto-build-an-executable-archive-with-ant">第84.10节“从Ant构建可执行存档，而不使用spring-boot-antlib”</a>如果不想使用spring-boot-antlib模块，请参阅“操作方法”。</p>
+</blockquote>
+<h3 id="135">13.5 启动器</h3>
+<p>启动器是一组方便的依赖关系描述符，可以包含在应用程序中。 您可以获得所需的所有Spring和相关技术的一站式服务，无需通过示例代码搜索和复制粘贴依赖配置。 例如，如果要开始使用Spring和JPA进行数据库访问，那么只需在项目中包含spring-boot-starter-data-jpa依赖关系即可。</p>
+<p>启动器包含许多依赖关系，包括您需要使项目快速启动并运行，并具有一致的受支持的依赖传递关系。</p>
+<p>What’s in a name</p>
+<p>所有正式起动器都遵循类似的命名模式： spring-boot-starter- * ，其中 * 是特定类型的应用程序。 这个命名结构旨在帮助你快速找到一个启动器。 许多IDE中的Maven插件允许您按名称搜索依赖项。 例如，安装Eclipse或STS的Maven插件后，您可以简单地在POM编辑器中点击 Dependency Hierarchy，并在filter输入“spring-boot-starter”来获取完整的列表。 如<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#boot-features-custom-starter">创建自己的启动器</a>部分所述，第三方启动程序不应该从Spring-boot开始，因为它是为正式的Spring Boot artifacts 保留的。 acme 的 第三方启动器通常被命名为acme-spring-boot-starter。</p>
+<p>Spring Boot在org.springframework.boot组下提供了以下应用程序启动器：</p>
+<p>表13.1. Spring Boot应用程序启动器</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Pom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spring-boot-starter-thymeleaf</td>
+<td>使用Thymeleaf视图构建MVC Web应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-thymeleaf/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-couchbase</td>
+<td>使用Couchbase面向文档的数据库和Spring Data Couchbase的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-couchbase/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-artemis</td>
+<td>使用Apache Artemis的JMS启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-artemis/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-web-services</td>
+<td>Spring Web Services 启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-web-services/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-mail</td>
+<td>Java Mail和Spring Framework的电子邮件发送支持的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-mail/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-redis</td>
+<td>Redis key-value 数据存储与Spring Data Redis和Jedis客户端启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-redis/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-web</td>
+<td>使用Spring MVC构建Web，包括RESTful应用程序。使用Tomcat作为默认的嵌入式容器的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-web/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-gemfire</td>
+<td>使用GemFire分布式数据存储和Spring Data GemFire的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-gemfire/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-activemq</td>
+<td>使用Apache ActiveMQ的JMS启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-activemq/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-elasticsearch</td>
+<td>使用Elasticsearch搜索和分析引擎和Spring Data Elasticsearch的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-elasticsearch/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-integration</td>
+<td>Spring Integration 启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-integration/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-test</td>
+<td>使用JUnit，Hamcrest和Mockito的库测试Spring Boot应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-test/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-jdbc</td>
+<td>使用JDBC与Tomcat JDBC连接池的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-jdbc/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-mobile</td>
+<td>使用Spring Mobile构建Web应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-mobile/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-validation</td>
+<td>使用Java Bean Validation 与Hibernate Validator的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-validation/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-hateoas</td>
+<td>使用Spring MVC和Spring HATEOAS构建基于超媒体的RESTful Web应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-hateoas/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-jersey</td>
+<td>使用JAX-RS和Jersey构建RESTful Web应用程序的启动器。spring-boot-starter-web的替代方案</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-jersey/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-neo4j</td>
+<td>使用Neo4j图数据库和Spring Data Neo4j的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-neo4j/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-ldap</td>
+<td>使用Spring Data LDAP的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-ldap/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-websocket</td>
+<td>使用Spring Framework的WebSocket支持构建WebSocket应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-websocket/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-aop</td>
+<td>使用Spring AOP和AspectJ进行面向切面编程的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-aop/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-amqp</td>
+<td>使用Spring AMQP和Rabbit MQ的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-amqp/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-cassandra</td>
+<td>使用Cassandra分布式数据库和Spring Data Cassandra的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-cassandra/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-social-facebook</td>
+<td>使用Spring Social Facebook 的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-social-facebook/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-jta-atomikos</td>
+<td>使用Atomikos的JTA事务的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-jta-atomikos/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-security</td>
+<td>使用Spring Security的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-security/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-mustache</td>
+<td>使用Mustache视图构建MVC Web应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-mustache/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-jpa</td>
+<td>使用Spring数据JPA与Hibernate的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-jpa/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter</td>
+<td>核心启动器，包括自动配置支持，日志记录和YAML</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-groovy-templates</td>
+<td>使用Groovy模板视图构建MVC Web应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-groovy-templates/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-freemarker</td>
+<td>使用FreeMarker视图构建MVC Web应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-freemarker/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-batch</td>
+<td>使用Spring Batch的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-batch/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-social-linkedin</td>
+<td>使用Spring Social LinkedIn的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-social-linkedin/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-cache</td>
+<td>使用Spring Framework缓存支持的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-cache/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-solr</td>
+<td>使用Apache Solr搜索平台与Spring Data Solr的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-solr/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-mongodb</td>
+<td>使用MongoDB面向文档的数据库和Spring Data MongoDB的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-mongodb/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-jooq</td>
+<td>使用jOOQ访问SQL数据库的启动器。 spring-boot-starter-data-jpa或spring-boot-starter-jdbc的替代方案</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-jooq/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-jta-narayana</td>
+<td>Spring Boot Narayana JTA 启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-jta-narayana/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-cloud-connectors</td>
+<td>使用Spring Cloud连接器，简化了与Cloud Foundry和Heroku等云平台中的服务连接的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-cloud-connectors/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-jta-bitronix</td>
+<td>使用Bitronix进行JTA 事务的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-jta-bitronix/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-social-twitter</td>
+<td>使用Spring Social Twitter的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-social-twitter/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-rest</td>
+<td>通过使用Spring Data REST在REST上暴露Spring数据库的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-data-rest/pom.xml">Pom</a></td>
+</tr>
+</tbody>
+</table>
+<p>除了应用程序启动器，以下启动器可用于添加<a href="http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/#production-ready">生产准备(production ready)</a>功能：</p>
+<p>表13.2 Spring Boot生产环境启动器</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Pom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spring-boot-starter-actuator</td>
+<td>使用Spring Boot Actuator提供生产准备功能，可帮助您监控和管理应用程序的启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-actuator/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-remote-shell</td>
+<td>使用CRaSH远程shell通过SSH监视和管理您的应用程序的启动器。 自1.5以来已弃用</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-remote-shell/pom.xml">Pom</a></td>
+</tr>
+</tbody>
+</table>
+<p>最后，Spring Boot还包括一些启动器，如果要排除或替换特定的技术，可以使用它们：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Pom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spring-boot-starter-undertow</td>
+<td>使用Undertow作为嵌入式servlet容器的启动器。 spring-boot-starter-tomcat的替代方案</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-undertow/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-jetty</td>
+<td>使用Jetty作为嵌入式servlet容器的启动器。 spring-boot-starter-tomcat的替代方案</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-jetty/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-logging</td>
+<td>使用Logback进行日志记录的启动器。 默认的日志启动器</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-logging/pom.xml">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-tomcat</td>
+<td>使用Tomcat作为嵌入式servlet容器的启动器。 spring-boot-starter-web的默认servlet容器启动器</td>
+<td><a href="http://note.youdao.com/">Pom</a></td>
+</tr>
+<tr>
+<td>spring-boot-starter-log4j2</td>
+<td>使用Log4j2进行日志记录的启动器。 spring-boot-start-logging的替代方法</td>
+<td><a href="https://github.com/spring-projects/spring-boot/tree/v1.5.2.RELEASE/spring-boot-starters/spring-boot-starter-log4j2/pom.xml">Pom</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>有关社区贡献的更多启动器的列表，请参阅GitHub上的spring-boot-startters模块中的<a href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-starters/README.adoc">README文件</a>。</p>
+</blockquote>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/spring-boot-doc-zh/" target="_blank">apachecn/spring-boot-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=spring-boot-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'spring-boot-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../8/" title="Part III. 使用 Spring Boot" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Part III. 使用 Spring Boot
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../10/" title="14. 构建代码" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                14. 构建代码
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
